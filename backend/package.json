@@ -1,0 +1,14 @@
+{
+  "name": "cycleon",
+  "version": "1.0.0",
+  "description": "TechLabsHH Summer Semester 2023 Group 8",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
