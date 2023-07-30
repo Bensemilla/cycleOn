@@ -1,12 +1,22 @@
 const express = require("express");
-const app = express();
+const mongoose = require("mongoose");
 
-app.get("/testing", (req, res) => {
+const appExpress = express();
+
+mongoose.connect("mongodb://127.0.0.1:27017");
+mongoose.connection.on("error", (error) => {
+  console.log("Mongo Fehler!");
+});
+mongoose.connection.on("connected", () => {
+  console.log("Mongo verbunden!");
+});
+
+appExpress.get("/testing", (req, res) => {
   res.status(200);
   res.send("All systems functional!");
 });
 
-app.listen(3000, (err) => {
+appExpress.listen(3000, (err) => {
   if (err) {
     console.log("Fehler!");
   } else {
