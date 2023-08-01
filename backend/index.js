@@ -20,6 +20,6 @@ appExpress.listen(3000, (err) => {
   if (err) {
     console.log("Fehler!");
   } else {
-    console.log("Server läuft.");
+    console.log("Server läuft auf localhost:3000");
   }
 });
