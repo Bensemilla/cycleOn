@@ -67,7 +67,7 @@ export default function Home() {
               value="choose your username"
             ></input>
             <br />
-            <label for="email">Please enter your email address:</label>
+            <label for="email">Please enter your email address:</label> <br />
             <input
               type="email"
               id="email"
