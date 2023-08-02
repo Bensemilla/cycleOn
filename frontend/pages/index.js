@@ -74,6 +74,7 @@ export default function Home() {
               name="email"
               value=" your email address"
             ></input>
+            <br />
           </form>
         </div>
 
