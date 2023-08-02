@@ -68,6 +68,12 @@ export default function Home() {
             ></input>
             <br />
             <label for="email">Please enter your email address:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value=" your email address"
+            ></input>
           </form>
         </div>
 
