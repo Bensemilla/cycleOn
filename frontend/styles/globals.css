@@ -22,16 +22,29 @@
 .header button {
   display: flex;
   flex-direction: row;
-  padding: 40px;
+  max-height: 80px;
   background-color: #fbfda3;
   color: #262626;
   margin: auto;
   align-content: flex-end;
+  border: 0px;
+  padding: 0px;
+}
+.header button a {
+  padding: 20px;
+  font-weight: bold;
 }
 .header button img {
-  width: 30px;
+  max-height: 100%;
+  width: 100%;
+  display: block;
   align-items: right;
   margin: 0px;
+}
+.header button span {
+  display: block;
+  height: 100%;
+  width: 30%;
 }
 #logo {
   width: 30%;

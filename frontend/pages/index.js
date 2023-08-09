@@ -39,7 +39,9 @@ export default function Home() {
             <li href="#WhoIsCycleOn">Who is cycleOn?</li>
             <li href="#useCycleOn">How can I use it?</li>
             <button>
-              <img src="/bike.png"></img>
+              <span>
+                <img src="/bike.png"></img>
+              </span>
               <a>Sign up here to plan your route</a>
             </button>
           </div>
