@@ -53,7 +53,7 @@ export default function Home() {
           <br></br>
           <br></br>
         </div>
-        <div class="signup">
+        <div class="registration">
           <form>
             <label for="name">How should we call you?</label>
             <br />
@@ -88,13 +88,16 @@ export default function Home() {
             <br />
             <br />
             <label for="bike">what kind of bike are you using?</label> <br />
-            <input
-              type="text"
-              id="bike"
-              name="bike type"
-              value="Your use a racing bike, electro bike, ... ?"
-              // How can we / do we want to convert to drop down?
-            ></input>
+            <select name="bike" id="bike-select">
+              <option value="">--Please choose your bike--</option>
+              <option value="race">Racing bike</option>
+              <option value="gravel">Gravel bike</option>
+              <option value="ebike">E-bike</option>
+              <option value="City">City bike</option>
+              <option value="Holland">Holland bike</option>
+              <option value="mb">mountainbike</option>
+              <option value="other">other</option>
+            </select>
             <br />
             <br />
             <label for="age">Would you tell us how old you are?</label> <br />
@@ -115,6 +118,7 @@ export default function Home() {
             {/* Add Terms & Conditions (tbd) Data Statement, something?  */}
             <br />
             <input type="submit" value="Sign me up!"></input>
+            <input type="reset" value="Reset form"></input>
           </form>
         </div>
 

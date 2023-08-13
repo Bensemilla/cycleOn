@@ -70,6 +70,25 @@ a {
   text-decoration: none;
 }
 
+input {
+  padding: 10px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+select {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2c2828;
+  box-sizing: border-box;
+}
+input submit {
+  /* How can I address submit and reset input at the same time? */
+  margin: 10px;
+  padding: 10px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
