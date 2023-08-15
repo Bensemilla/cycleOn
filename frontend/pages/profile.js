@@ -5,10 +5,10 @@ export default function Map() {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title rel="stylesheet" href="profile_styles.css"></title>
+        <title rel="stylesheet" href="globals.css"></title>
       </Head>
 
-      <div className="container">
+      <div className="container-profile">
         <div className="profile-box">
           <img src="menu.png" className="menu-icon" />
           <img src="setting.png" className="setting-icon" />
