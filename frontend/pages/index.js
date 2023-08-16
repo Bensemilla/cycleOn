@@ -39,12 +39,13 @@ export default function Home() {
             <li href="#WhoIsCycleOn">Who is cycleOn?</li>
             <li href="#useCycleOn">How can I use it?</li>
             <button>
-              <img src="/bike.png"></img>
+              <span>
+                <img src="/bike.png"></img>
+              </span>
               <a>Sign up here to plan your route</a>
             </button>
           </div>
         </div>
-        {/* from here I wasnt able to check the code as npm run xyz didnt work  */}
         <div class="map">
           <br></br>
           <br></br>
@@ -52,11 +53,18 @@ export default function Home() {
           <br></br>
           <br></br>
         </div>
-        <div class="signup">
+        <div class="registration">
           <form>
-            <label for="name">What is your name?</label>
+            <label for="name">How should we call you?</label>
             <br />
-            <input type="text" id="name" name="name" value="Your name"></input>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value="Your name"
+              required
+            ></input>
+            <br />
             <br />
             <label for="user">Please enter a username:</label>
             <br />
@@ -64,17 +72,53 @@ export default function Home() {
               type="text"
               id="user"
               name="username"
-              value="choose your username"
+              value="Your username"
+              required
             ></input>
+            <br />
             <br />
             <label for="email">Please enter your email address:</label> <br />
             <input
               type="email"
               id="email"
               name="email"
-              value=" your email address"
+              value=" Your email address"
+              required
             ></input>
             <br />
+            <br />
+            <label for="bike">what kind of bike are you using?</label> <br />
+            <select name="bike" id="bike-select">
+              <option value="">--Please choose your bike--</option>
+              <option value="race">Racing bike</option>
+              <option value="gravel">Gravel bike</option>
+              <option value="ebike">E-bike</option>
+              <option value="City">City bike</option>
+              <option value="Holland">Holland bike</option>
+              <option value="mb">mountainbike</option>
+              <option value="other">other</option>
+            </select>
+            <br />
+            <br />
+            <label for="age">Would you tell us how old you are?</label> <br />
+            <input type="number" id="age" name="age"></input>
+            {/* How can I let the number for the age start at a certain level, i.e. 15 years ? */}
+            <br />
+            <br />
+            {/* Can we have a multiple layer sign form? i.e. you enter the above data, send it and then you choose your password? If not, password fields below. How do we check they're the same?*/}
+            <label for="pw">Please choose a password</label> <br />
+            <input type="password" id="pw" name="password" required></input>
+            <br />
+            <br />
+            <label for="pw">Please verify your password</label> <br />
+            <input type="password" id="pw" name="password" required></input>
+            <br />
+            <br />
+            <br />
+            {/* Add Terms & Conditions (tbd) Data Statement, something?  */}
+            <br />
+            <input type="submit" value="Sign me up!"></input>
+            <input type="reset" value="Reset form"></input>
           </form>
         </div>
 
