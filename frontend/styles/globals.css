@@ -29,10 +29,13 @@
   align-content: flex-end;
   border: 0px;
   padding: 0px;
+  cursor: pointer;
+  align-items: center;
 }
 .header button a {
   padding: 20px;
   font-weight: bold;
+  align-items: center;
 }
 .header button img {
   max-height: 100%;
@@ -49,27 +52,32 @@
 #logo {
   width: 30%;
 }
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 a {
   color: inherit;
   text-decoration: none;
 }
+/* Here starts the css for the form */
+.container-registration {
+  width: 20%;
+  height: 30%;
+  border: #000000;
+  padding: 20%;
+  margin: 20%;
+  display: flex;
+  flex-directicon: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+}
 
+.registration {
+  background: #fbfda3;
+  text-align: center;
+  padding: 40px 90px;
+  color: #000000;
+  position: relative;
+  border-radius: 20px;
+}
 input {
   padding: 10px 20px;
   margin: 8px 0;
@@ -83,10 +91,11 @@ select {
   background-color: #2c2828;
   box-sizing: border-box;
 }
-input submit {
-  /* How can I address submit and reset input at the same time? */
+.inputButton {
   margin: 10px;
   padding: 10px;
+  cursor: pointer;
+  outline: auto;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -95,6 +104,41 @@ input submit {
   }
 }
 
+.login {
+  background-color: #fbfda3;
+  color: #000000;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.login input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.login button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
 /* ---- Below this line starts the css for the file "map.js" ---- */
 
 .container-map {
@@ -211,5 +255,5 @@ input submit {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "poppins", sans-serif;
+  /* font-family: "poppins", sans-serif; */
 }

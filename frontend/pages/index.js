@@ -13,25 +13,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${font.className}`}>
-        {/* <div className={styles.description}>
-          <p>
-            your biking companion&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a href="home" target="_blank">
-              By{" "}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div> */}
         <div class="header">
           <img src="/logo.png" href="#index" id="logo"></img>
           <div class="navbar">
@@ -42,7 +23,7 @@ export default function Home() {
               <span>
                 <img src="/bike.png"></img>
               </span>
-              <a>Sign up here to plan your route</a>
+              <a>Sign up to plan your route!</a>
             </button>
           </div>
         </div>
@@ -53,76 +34,90 @@ export default function Home() {
           <br></br>
           <br></br>
         </div>
-        <div class="registration">
-          <form>
-            <label for="name">How should we call you?</label>
-            <br />
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value="Your name"
-              required
-            ></input>
-            <br />
-            <br />
-            <label for="user">Please enter a username:</label>
-            <br />
-            <input
-              type="text"
-              id="user"
-              name="username"
-              value="Your username"
-              required
-            ></input>
-            <br />
-            <br />
-            <label for="email">Please enter your email address:</label> <br />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value=" Your email address"
-              required
-            ></input>
-            <br />
-            <br />
-            <label for="bike">what kind of bike are you using?</label> <br />
-            <select name="bike" id="bike-select">
-              <option value="">--Please choose your bike--</option>
-              <option value="race">Racing bike</option>
-              <option value="gravel">Gravel bike</option>
-              <option value="ebike">E-bike</option>
-              <option value="City">City bike</option>
-              <option value="Holland">Holland bike</option>
-              <option value="mb">mountainbike</option>
-              <option value="other">other</option>
-            </select>
-            <br />
-            <br />
-            <label for="age">Would you tell us how old you are?</label> <br />
-            <input type="number" id="age" name="age"></input>
-            {/* How can I let the number for the age start at a certain level, i.e. 15 years ? */}
-            <br />
-            <br />
-            {/* Can we have a multiple layer sign form? i.e. you enter the above data, send it and then you choose your password? If not, password fields below. How do we check they're the same?*/}
-            <label for="pw">Please choose a password</label> <br />
-            <input type="password" id="pw" name="password" required></input>
-            <br />
-            <br />
-            <label for="pw">Please verify your password</label> <br />
-            <input type="password" id="pw" name="password" required></input>
-            <br />
-            <br />
-            <br />
-            {/* Add Terms & Conditions (tbd) Data Statement, something?  */}
-            <br />
-            <input type="submit" value="Sign me up!"></input>
-            <input type="reset" value="Reset form"></input>
-          </form>
+        <div class="container.registration">
+          <div class="registration">
+            <form>
+              <label for="name">How should we call you?</label>
+              <br />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value="Your name"
+                required
+              ></input>
+              <br />
+              <br />
+              <label for="user">Please enter a username:</label>
+              <br />
+              <input
+                type="text"
+                id="user"
+                name="username"
+                value="Your username"
+                required
+              ></input>
+              <br />
+              <br />
+              <label for="email">Please enter your email address:</label> <br />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value=" Your email address"
+                required
+              ></input>
+              <br />
+              <br />
+              <label for="bike">what kind of bike are you using?</label> <br />
+              <select name="bike" id="bike-select">
+                <option value="">--Please choose your bike--</option>
+                <option value="race">Racing bike</option>
+                <option value="gravel">Gravel bike</option>
+                <option value="ebike">E-bike</option>
+                <option value="City">City bike</option>
+                <option value="Holland">Holland bike</option>
+                <option value="mb">mountainbike</option>
+                <option value="other">other</option>
+              </select>
+              <br />
+              <br />
+              <label for="age">Would you tell us how old you are?</label> <br />
+              <input type="number" id="age" name="age"></input>
+              {/* How can I let the number for the age start at a certain level, i.e. 15 years ? */}
+              <br />
+              <br />
+              {/* Can we have a multiple layer sign form? i.e. you enter the above data, send it and then you choose your password? If not, password fields below. How do we check they're the same?*/}
+              <label for="pw">Please choose a password</label> <br />
+              <input type="password" id="pw" name="password" required></input>
+              <br />
+              <br />
+              <label for="pw">Please verify your password</label> <br />
+              <input type="password" id="pw" name="password" required></input>
+              <br />
+              <br />
+              <br />
+              {/* Add Terms & Conditions (tbd) Data Statement, something?  */}
+              <br />
+              <input
+                class="inputButton"
+                type="submit"
+                value="Sign me up!"
+              ></input>
+              <input
+                class="inputButton"
+                type="reset"
+                value="Reset form"
+              ></input>
+            </form>
+          </div>
         </div>
-
-        <div class="login"></div>
+        <div class="login">
+          <label for="username">Please enter your username</label> <br />
+          <input type="text" id="user" name="username" required></input>
+          <label for="pw">Please enter your password</label> <br />
+          <input type="password" id="pw" name="password" required></input>
+        </div>
       </main>
     </>
   );
