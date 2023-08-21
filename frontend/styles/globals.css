@@ -133,10 +133,10 @@ input submit {
 }
 
 .profile-box {
-  background: #ff574a;
+  background: #fbfda3;
   text-align: center;
   padding: 40px 90px;
-  color: #fff;
+  color: #262626;
   position: relative;
   border-radius: 20px;
 }
@@ -158,13 +158,13 @@ input submit {
 .profile-pic {
   width: 150px;
   border-radius: 50%;
-  background: #fff;
+  background: #262626;
   padding: 6px;
 }
 
 .profile-bottom {
-  background: #fff;
-  color: #999;
+  background: #262626;
+  color: #f2f2f2;
   padding: 60px 0;
   margin-right: -90px;
   margin-left: -90px;
@@ -174,17 +174,17 @@ input submit {
 }
 
 .profile-bottom img {
-  width: 15px;
-  margin-top: 15px;
+  width: 25px;
+  margin-top: 25px;
   cursor: pointer;
 }
 
 .profile-box button {
-  background: #fff;
-  color: #ff574a;
+  background: #262626;
+  color: #fbfda3;
   border: none;
   outline: none;
-  box-shadow: 0 5px 10px rgba(244, 67, 57, 0.5);
+  box-shadow: 0 5px 10px rgba(236, 220, 70, 0.685);
   padding: 15px 60px;
   cursor: pointer;
   border-radius: 30px;

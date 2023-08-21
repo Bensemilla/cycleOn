@@ -10,8 +10,8 @@ export default function Map() {
 
       <div className="container-profile">
         <div className="profile-box">
-          <img src="menu.png" className="menu-icon" />
-          <img src="setting.png" className="setting-icon" />
+          <img src="menu2.png" className="menu-icon" />
+          <img src="settings.png" className="setting-icon" />
           <img src="profile-pic.png" className="profile-pic" />
           <h3>John Reed</h3>
           <p>Standart User</p>
@@ -23,7 +23,7 @@ export default function Map() {
           <button type="button">Follow</button>
           <div className="profile-bottom">
             <p>Learn more about my profile</p>
-            <img src="arrow.png" />
+            <img src="arrow2.png" />
           </div>
         </div>
       </div>
