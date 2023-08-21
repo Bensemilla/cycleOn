@@ -1,14 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const User = require("./models/User");
 
 const appExpress = express();
 
 mongoose.connect("mongodb://127.0.0.1:27017");
 mongoose.connection.on("error", (error) => {
-  console.log("Mongo Fehler!");
+  console.log("DB error!");
 });
 mongoose.connection.on("connected", () => {
-  console.log("Mongo verbunden!");
+  console.log("Connected to DB!");
 });
 
 appExpress.get("/testing", (req, res) => {
@@ -18,8 +19,30 @@ appExpress.get("/testing", (req, res) => {
 
 appExpress.listen(3000, (err) => {
   if (err) {
-    console.log("Fehler!");
+    console.log("server error!");
   } else {
-    console.log("Server läuft auf localhost:3000");
+    console.log("Server running on localhost:3000");
   }
+});
+
+// ---------- USER REGISTRATION ROUTE: -------------
+
+appExpress.post("/register", (req, res) => {
+  //Check if email already registered
+
+  User.findOne({ email: req.body.email }).then((user) => {
+    if (user) {
+      // respond with a 400 error if email already exists
+      return res.status(400).json({ email: "email already registered" });
+    } else {
+      //create new user
+      const newUser = new User({
+        userName: req.body.userName,
+        email: req.body.email,
+        password: req.body.password,
+      });
+      newUser.save();
+      return res.status(200).json({ msg: newUser });
+    }
+  });
 });
