@@ -10,19 +10,19 @@ const ratingSchema = mongoose.Schema(
       type: Number,
       required: [true, "Bitte wähle dein Rating."],
       default: 0,
-      min: 1, // is this min & max right? I want them to give rating from 1-5
+      min: 1,
       max: 5,
     },
     comments: {
       type: String,
       required: false,
-      maxlength: 100, // is this right? I want to limit the max. amount of characters
+      maxLength: 100,
     },
   },
   {
-    timestamps: true,
+    timestamps: true, //mongoose adds timestamp for adding & modification dates
   }
 );
 
 const Rating = mongoose.model("Rating", ratingSchema);
-module.exports = Rating; // exportiert Rating Modell zu MongoDB?
+module.exports = Rating; // exportiert Rating Modell zu MongoDB (every JS file is a module in node)

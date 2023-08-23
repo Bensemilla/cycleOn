@@ -16,6 +16,13 @@ appExpress.get("/testing", (req, res) => {
   res.send("All systems functional!");
 });
 
+//rating route
+appExpress.post("/rating", (req, res) => {
+  console.log(req.body);
+  res.send(req.body); // whenever I hit the endpoint /rating, this logic will be executed. Routes are equivalent to URL in browser
+});
+
+// starting the app on port 3000
 appExpress.listen(3000, (err) => {
   if (err) {
     console.log("Fehler!");
