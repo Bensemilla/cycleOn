@@ -1,8 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const User = require("./models/User");
+const parser = require("body-parser");
 
 const appExpress = express();
+appExpress.use(parser.json());
 
 mongoose.connect("mongodb://127.0.0.1:27017");
 mongoose.connection.on("error", (error) => {
