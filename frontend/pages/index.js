@@ -34,8 +34,22 @@ export default function Home() {
           <br></br>
           <br></br>
         </div>
-        <div class="container.registration">
-          <div class="registration">
+        <div class="tab">
+          <button
+            class="tablinks"
+            onclick="openForm(event, 'container-registration')"
+          >
+            Register here
+          </button>
+          <button
+            class="tablinks"
+            onclick="openForm(event, 'container-signup')"
+          >
+            Sign up here
+          </button>
+        </div>
+        <div id="container-registration" class="tabcontent">
+          <div class="tabcontent.active">
             <form>
               <label for="name">How should we call you?</label>
               <br />
@@ -112,13 +126,36 @@ export default function Home() {
             </form>
           </div>
         </div>
-        <div class="login">
-          <label for="username">Please enter your username</label> <br />
-          <input type="text" id="user" name="username" required></input>
-          <label for="pw">Please enter your password</label> <br />
-          <input type="password" id="pw" name="password" required></input>
+        <div id="container-login" class="tabcontent">
+          <form>
+            <label for="username">Please enter your username</label> <br />
+            <input type="text" id="user" name="username" required></input>
+            <label for="pw">Please enter your password</label> <br />
+            <input type="password" id="pw" name="password" required></input>
+          </form>
         </div>
+        {/* CJavaScript */}
       </main>
     </>
   );
+}
+function openForm(evt, formName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(formName).style.display = "block";
+  evt.currentTarget.className += " active";
 }
