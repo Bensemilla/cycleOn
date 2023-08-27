@@ -62,23 +62,28 @@ appExpress.post("/register", (req, res) => {
 // ---------- USER LOGIN: ------------
 
 appExpress.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
 
-  if (!user) {
-    throw Error("User not found");
-  }
-  if (password === user.password) {
-    const token = jwt.sign({ user }, "yourSecretKey", {
-      expiresIn: "24h",
-    });
+    if (!user) {
+      throw Error();
+    }
+    if (password === user.password) {
+      const token = jwt.sign({ user }, "yourSecretKey", {
+        expiresIn: "24h",
+      });
 
-    res.json({
-      user,
-      token,
-      message: "user logged in successfully",
-    });
-  } else {
-    res.status(401).json({ msg: "unauthenticated" });
+      res.json({
+        user,
+        token,
+        message: "user logged in successfully",
+      });
+    } else {
+      res.status(401).json({ msg: "unauthenticated" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "User not found" });
   }
 });
