@@ -16,7 +16,10 @@ const ratingSchema = mongoose.Schema(
     comments: {
       type: String,
       required: false,
-      maxLength: 100,
+      maxLength: [
+        100,
+        "Es können maximal 100 Zeichen genutzt werden. Kürze den Text.",
+      ],
     },
   },
   {
