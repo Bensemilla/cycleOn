@@ -3,9 +3,23 @@ const mongoose = require("mongoose");
 const User = require("./models/User");
 const parser = require("body-parser");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const cryptoJS = require("crypto-js");
+const nodemailer = require("nodemailer");
 
 const appExpress = express();
 appExpress.use(parser.json());
+
+const transporter = nodemailer.createTransport({
+  service: "proton",
+  auth: {
+    user: "cycleon2023@proton.me",
+    pass: "TechLabs2023Group8",
+  },
+});
+
+const verificationHash = () =>
+  require("crypto").randomBytes(128).toString("hex");
 
 mongoose.connect("mongodb://127.0.0.1:27017");
 mongoose.connection.on("error", (error) => {
@@ -52,6 +66,8 @@ appExpress.post("/register", (req, res) => {
         password: req.body.password,
         age: req.body.age,
         bikeType: req.body.bikeType,
+        active: false,
+        verificationHash: verificationHash(),
       });
       newUser.save();
       return res.status(200).json({ msg: newUser });
@@ -69,7 +85,7 @@ appExpress.post("/login", async (req, res) => {
     if (!user) {
       throw Error();
     }
-    if (password === user.password) {
+    if (bcrypt.compareSync(password, user.password)) {
       const token = jwt.sign({ user }, "yourSecretKey", {
         expiresIn: "24h",
       });
@@ -87,3 +103,9 @@ appExpress.post("/login", async (req, res) => {
     res.status(500).json({ msg: "User not found" });
   }
 });
+
+/* ------------ User email verification -------------- 
+
+
+
+*/

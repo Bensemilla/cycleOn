@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const cryptoJS = require("crypto-js");
 const Schema = mongoose.Schema;
+
+function setPassword(value) {
+  return bcrypt.hashSync(value, 10);
+}
 
 const userSchema = new Schema({
   name: {
@@ -18,6 +24,7 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
+    set: setPassword,
   },
   age: {
     type: Number,
@@ -28,6 +35,12 @@ const userSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  active: {
+    type: Boolean,
+  },
+  verificationHash: {
+    type: String,
   },
 });
 
