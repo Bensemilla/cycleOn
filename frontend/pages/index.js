@@ -3,8 +3,6 @@ import { Kosugi_Maru } from "next/font/google";
 import Button from "@/components/button";
 import Registrationbox from "@/components/registrationbox";
 
-const font = Kosugi_Maru({ weight: "400", subsets: ["latin"] });
-
 export default function Home() {
   return (
     <>
@@ -13,10 +11,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${font.className}`}>
+      <main>
         <div className="header">
-          <img src="/logo.png" href="#index" id="logo"></img>
-          <div class="navbar">
+          <a href="/">
+            <img src="/logo.png" id="logo"></img>
+          </a>
+          <div className="navbar">
             <a href="/aboutCycleOn">What is cycleOn?</a>
             <a href="/WhoIsCycleOn">Who is cycleOn?</a>
             <a href="/profile">How can I use it?</a>

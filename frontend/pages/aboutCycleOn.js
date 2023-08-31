@@ -1,10 +1,7 @@
 import Head from "next/head";
-import { Kosugi_Maru } from "next/font/google";
 import Button from "@/components/button";
 import Registrationbox from "@/components/registrationbox";
 import { useState } from "react";
-
-const font = Kosugi_Maru({ weight: "400", subsets: ["latin"] });
 
 export default function about() {
   const [showBox, setShowBox] = useState(false);
@@ -14,6 +11,7 @@ export default function about() {
 
   function boxAppear() {
     setShowBox(true);
+    console.log("test");
   }
   return (
     <>
@@ -22,14 +20,15 @@ export default function about() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${font.className}`}>
+      <main>
         <div class="header">
           <img src="/logo.png" href="#index" id="logo"></img>
           <div class="navbar">
             <li href="#aboutCycleOn">What is cycleOn?</li>
             <li href="#WhoIsCycleOn">Who is cycleOn?</li>
             <li href="#useCycleOn">How can I use it?</li>
-            <Button />
+            <Button onClick={boxAppear} />
+            {/* Need to define the opposite on component -> inside Button */}
           </div>
         </div>
         <div className="about">
@@ -49,7 +48,7 @@ export default function about() {
               our biking community? Click below to sign up and plan your route.
             </a>
             <Button onClick={boxAppear} />
-            <Registrationbox />
+            {showBox === true ? <Registrationbox /> : null}
           </div>
         </div>
         <footer></footer>

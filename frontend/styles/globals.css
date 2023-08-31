@@ -3,6 +3,12 @@
     color-scheme: dark;
   }
 }
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 100px;
+  align-items: center;
+}
 .header {
   display: flex;
   flex-direction: row;

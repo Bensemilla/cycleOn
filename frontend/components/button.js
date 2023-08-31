@@ -1,6 +1,6 @@
-export default function Button() {
+export default function Button(props) {
   return (
-    <button className="signupbutton" onClick="registrationbox">
+    <button className="signupbutton" onClick={props.onClick}>
       {/* Can I copy the button like this to any part of the site an adress from css */}
       <div>
         <img src="/bike.png"></img>
