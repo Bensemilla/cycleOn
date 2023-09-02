@@ -10,17 +10,19 @@ const nodemailer = require("nodemailer");
 const appExpress = express();
 appExpress.use(parser.json());
 
+// -------- define smpt email settings for verification mail ------------
+
 const transporter = nodemailer.createTransport({
-  service: "proton",
-  auth: {
-    user: "cycleon2023@proton.me",
-    pass: "TechLabs2023Group8",
-  },
+  host: "smtp.freesmtpservers.com",
+  port: 25,
+  secure: false,
 });
 
+// ----------- define function for verification hash creation -----------
 const verificationHash = () =>
   require("crypto").randomBytes(128).toString("hex");
 
+// -------------- conect to database and test connection ----------------
 mongoose.connect("mongodb://127.0.0.1:27017");
 mongoose.connection.on("error", (error) => {
   console.log("DB error!");
@@ -29,20 +31,14 @@ mongoose.connection.on("connected", () => {
   console.log("Connected to DB!");
 });
 
+//-------------- route for server testing ---------------------------
+
 appExpress.get("/testing", (req, res) => {
   res.status(200);
   res.send("All systems functional!");
 });
 
-appExpress.listen(3000, (err) => {
-  if (err) {
-    console.log("server error!");
-  } else {
-    console.log("Server running on localhost:3000");
-  }
-});
-
-// ---------- USER REGISTRATION ROUTE: -------------
+// ------------ USER REGISTRATION ROUTE: -------------
 
 appExpress.post("/register", (req, res) => {
   //Check if email already registered
@@ -70,6 +66,21 @@ appExpress.post("/register", (req, res) => {
         verificationHash: verificationHash(),
       });
       newUser.save();
+      // ------- send verification email to user --------
+      const mailOptions = {
+        from: "cycleon2023@proton.me",
+        to: newUser.email,
+        subject: "cyCleon email verification",
+        text: `Please click the following link to verify your email adress: https://localhost:3000/${newUser.verificationHash}`,
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return res.status(505).json({ verification: "unable to send email" });
+        } else {
+          return res.status(205).json({ verification: "email sent" });
+        }
+      });
       return res.status(200).json({ msg: newUser });
     }
   });
@@ -104,8 +115,10 @@ appExpress.post("/login", async (req, res) => {
   }
 });
 
-/* ------------ User email verification -------------- 
-
-
-
-*/
+appExpress.listen(3000, (err) => {
+  if (err) {
+    console.log("server error!");
+  } else {
+    console.log("Server running on localhost:3000");
+  }
+});
