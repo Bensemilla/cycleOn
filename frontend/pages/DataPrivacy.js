@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Button from "@/components/button";
+import Navbar from "@/components/navbar";
 
 export default function Data() {
   return (
@@ -10,15 +10,7 @@ export default function Data() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div class="header">
-          <img src="/logo.png" href="#index" id="logo"></img>
-          <div class="navbar">
-            <a href="/aboutCycleOn">What is cycleOn?</a>
-            <a href="/WhoIsCycleOn">Who is cycleOn?</a>
-            <a href="/profile">How can I use it?</a>
-            <Button />
-          </div>
-        </div>
+        <Navbar />
         <div class="Contact">
           <a>
             This WebApp was built by: <br />

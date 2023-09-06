@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Button from "@/components/button";
 import Registrationbox from "@/components/registrationbox";
+import Navbar from "@/components/navbar";
 import { useState } from "react";
 
-export default function about() {
+export default function cycleOn() {
   const [showBox, setShowBox] = useState(false);
 
   // showBox (false, true)
@@ -21,16 +22,9 @@ export default function about() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div class="header">
-          <img src="/logo.png" href="#index" id="logo"></img>
-          <div class="navbar">
-            <li href="#aboutCycleOn">What is cycleOn?</li>
-            <li href="#WhoIsCycleOn">Who is cycleOn?</li>
-            <li href="#useCycleOn">How can I use it?</li>
-            <Button onClick={boxAppear} />
-            {/* Need to define the opposite on component -> inside Button */}
-          </div>
-        </div>
+        <Navbar />
+        <Button onClick={boxAppear} />
+        {/* Need to define the opposite on component -> inside Button */}
         <div className="about">
           <h1>What is cycleOn?</h1>
           <a id="description">

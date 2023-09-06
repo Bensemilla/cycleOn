@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { Kosugi_Maru } from "next/font/google";
 import Button from "@/components/button";
 import Registrationbox from "@/components/registrationbox";
+import Navbar from "@/components/navbar";
 
 export default function Home() {
   return (
@@ -12,18 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="header">
-          <a href="/">
-            <img src="/logo.png" id="logo"></img>
-          </a>
-          <div className="navbar">
-            <a href="/aboutCycleOn">What is cycleOn?</a>
-            <a href="/WhoIsCycleOn">Who is cycleOn?</a>
-            <a href="/profile">How can I use it?</a>
-            <Button />
-            {/* With this we call the Button component from the components folder. Major B marks the component element. */}
-          </div>
-        </div>
+        <Navbar />
+        {/* With this we call the Button component from the components folder. Major B marks the component element. */}
         <div class="map">
           <br></br>
           <br></br>
