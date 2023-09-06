@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cryptoJS = require("crypto-js");
 const nodemailer = require("nodemailer");
+const URL = require("url");
 
 const appExpress = express();
 appExpress.use(parser.json());
@@ -18,9 +19,36 @@ const transporter = nodemailer.createTransport({
   secure: false,
 });
 
+// ---------- function for user verification check -------------
+const verify = () => {
+  User.findOne({ verificationEmailSent: false }).then((unverifiedUser) => {
+    if (unverifiedUser) {
+      const mailOptions = {
+        from: "cycleon2023@proton.me",
+        to: unverifiedUser.email,
+        subject: "cyCleon email verification",
+        text: `Please click the following link to verify your email adress: http://localhost:3000/verify?hash=${unverifiedUser.verificationHash}`,
+      };
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return res.status(505).json({ verification: "unable to send email" });
+        } else {
+          unverifiedUser.verificationEmailSent = true;
+          unverifiedUser.save();
+          return res.status(205).json({ verification: "email sent" });
+        }
+      });
+    } else {
+      return res
+        .status(402)
+        .json({ active: "Verification email sent to all users" });
+    }
+  });
+};
+
 // ----------- define function for verification hash creation -----------
 const verificationHash = () =>
-  require("crypto").randomBytes(128).toString("hex");
+  require("crypto").randomBytes(16).toString("hex");
 
 // -------------- conect to database and test connection ----------------
 mongoose.connect("mongodb://127.0.0.1:27017");
@@ -64,23 +92,10 @@ appExpress.post("/register", (req, res) => {
         bikeType: req.body.bikeType,
         active: false,
         verificationHash: verificationHash(),
+        verificationEmailSent: false,
       });
       newUser.save();
-      // ------- send verification email to user --------
-      const mailOptions = {
-        from: "cycleon2023@proton.me",
-        to: newUser.email,
-        subject: "cyCleon email verification",
-        text: `Please click the following link to verify your email adress: https://localhost:3000/${newUser.verificationHash}`,
-      };
-
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          return res.status(505).json({ verification: "unable to send email" });
-        } else {
-          return res.status(205).json({ verification: "email sent" });
-        }
-      });
+      verify();
       return res.status(200).json({ msg: newUser });
     }
   });
@@ -113,6 +128,23 @@ appExpress.post("/login", async (req, res) => {
     console.error(error);
     res.status(500).json({ msg: "User not found" });
   }
+});
+
+// ------------- route to check for user verification ----------------
+
+appExpress.post("/verify", (req, res) => {
+  const userHash = req.query.hash;
+  User.findOne({ verificationHash: userHash }).then((verifiedUser) => {
+    if (verifiedUser) {
+      verifiedUser.active = true;
+      verifiedUser.save();
+      return res
+        .status(220)
+        .json({ verification: "User successfully verified" });
+    } else {
+      return res.status(600).json({ verification: "user not found" });
+    }
+  });
 });
 
 appExpress.listen(3000, (err) => {
