@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export default function Map() {
   return (
@@ -7,7 +9,7 @@ export default function Map() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title rel="stylesheet" href="globals.css"></title>
       </Head>
-
+      <Navbar />
       <div className="container-profile">
         <div className="profile-box">
           <img src="menu2.png" className="menu-icon" />
@@ -27,6 +29,7 @@ export default function Map() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

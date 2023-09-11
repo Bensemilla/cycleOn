@@ -80,11 +80,15 @@ export default function Registrationbox() {
             {/* Add Terms & Conditions (tbd) Data Statement, Imprint something?  */}
             <br />
             <input
-              class="inputButton"
+              className="inputButton"
               type="submit"
               value="Sign me up!"
             ></input>
-            <input class="inputButton" type="reset" value="Reset form"></input>
+            <input
+              className="inputButton"
+              type="reset"
+              value="Reset form"
+            ></input>
           </form>
         </div>
       ) : (
