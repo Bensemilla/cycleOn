@@ -21,7 +21,7 @@ export default function about() {
           <ul>Benjamin</ul>
           <ul>Bruno</ul>
           <ul>Carina</ul>
-          <ul>Sara</ul>
+          <ul><a href="https://www.linkedin.com/in/sara-brandt-3a200b166/">Sara</a></ul>
           <ul>and Mentor Konstantin</ul>
         </div>
         <Footer />
