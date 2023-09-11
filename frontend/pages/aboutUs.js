@@ -22,7 +22,7 @@ export default function about() {
           <ul>Bruno</ul>
           <ul>Carina</ul>
           <ul>Sara</ul>
-          
+          <ul>and Mentor Konstantin</ul>
         </div>
         <Footer />
       </main>
