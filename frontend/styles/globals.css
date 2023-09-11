@@ -8,6 +8,7 @@
   flex-direction: column;
   margin: 100px;
   align-items: center;
+  justify-content: center;
 }
 .header {
   display: flex;
@@ -16,6 +17,15 @@
   align-items: center;
   justify-content: space-between;
   height: 75px;
+}
+.content {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
 }
 .navbar {
   display: flex;
@@ -87,7 +97,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
-/* Here starts the css for the form */
+/* Here starts the css for the registration form */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
@@ -108,21 +118,19 @@ a {
   background-color: #b1b371;
 }
 .container-box {
+  z-index: 2;
   display: flex;
   flex-direction: column;
   width: 20%;
   height: 700px;
   border: #000000;
-  padding: 20%;
-  margin: 20%;
-  display: flex;
   align-items: center;
   justify-content: center;
   background: #fbfda3;
+  opacity: 90%;
   text-align: center;
-  padding: 40px 90px;
   color: #000000;
-  position: relative;
+  position: absolute;
   border-radius: 20px;
   padding: 6px 12px;
   border: 1px solid #b1b371;
@@ -286,4 +294,10 @@ select {
   padding: 0;
   box-sizing: border-box;
   /* font-family: "Kosugi_Maru", sans-serif; */
+}
+.about {
+  max-width: 500px;
+}
+.footer {
+  
 }

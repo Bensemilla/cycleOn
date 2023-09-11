@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export default function Map() {
   return (
@@ -28,6 +29,7 @@ export default function Map() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

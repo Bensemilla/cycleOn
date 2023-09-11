@@ -2,6 +2,7 @@ import Head from "next/head";
 import Button from "@/components/button";
 import Registrationbox from "@/components/registrationbox";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import { useState } from "react";
 
 export default function cycleOn() {
@@ -23,29 +24,32 @@ export default function cycleOn() {
       </Head>
       <main>
         <Navbar />
-        <Button onClick={boxAppear} />
-        {/* Need to define the opposite on component -> inside Button */}
-        <div className="about">
-          <h1>What is cycleOn?</h1>
-          <a id="description">
-            CycleOn is your biking companion in Hamburg. It helps you with
-            finding the best bike routes around our city by letting users rate
-            bike lanes, notify about obstructed roads or obstacles and suggest
-            alternatives for inefficient routes. After signing up, you can share
-            details about your bike, biking style and a short desciprtion about
-            yourself to find other bike lovers to connect with. We are aiming at
-            releasing a routing function soon as well.
-          </a>
-          <div className="signup">
-            <a>
-              You are an avid biker from Hamburg and are intersted in joining
-              our biking community? Click below to sign up and plan your route.
+        <div className="content">
+          <div className="about">
+            <h1>What is cycleOn?</h1>
+            <a id="description">
+              CycleOn is your biking companion in Hamburg. It helps you with
+              finding the best bike routes around our city by letting users rate
+              bike lanes, notify about obstructed roads or obstacles and suggest
+              alternatives for inefficient routes. After signing up, you can
+              share details about your bike, biking style and a short
+              desciprtion about yourself to find other bike lovers to connect
+              with. We are aiming at releasing a routing function soon as well.
             </a>
-            <Button onClick={boxAppear} />
-            {showBox === true ? <Registrationbox /> : null}
+            <br></br>
+            <br></br>
+            <div className="signup">
+              <a>
+                You are an avid biker from Hamburg and are intersted in joining
+                our biking community? Click below to sign up and plan your
+                route.
+              </a>
+              <Button onClick={boxAppear} />
+              {showBox === true ? <Registrationbox /> : null}
+            </div>
           </div>
+          <Footer />
         </div>
-        <footer></footer>
       </main>
     </>
   );
