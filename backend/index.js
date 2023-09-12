@@ -8,9 +8,64 @@ const bcrypt = require("bcrypt");
 const cryptoJS = require("crypto-js");
 const nodemailer = require("nodemailer");
 const URL = require("url");
+const cron = require("node-cron");
 
 const appExpress = express();
 appExpress.use(parser.json());
+
+//                                  !!-------- Define CronJob for scheduled unregistered user deletion --------!!
+
+// ------- check for inactive users and flag as expired-----------
+/*
+cron.schedule("*5 * * * * *", () => {
+  console.log("this message shows every 5 seconds");
+  User.findOne({ active: false }).then((inactiveUser) => {
+    if (inactiveUser) {
+      let dateNow = Date.now();
+      let signUpDate = inactiveUser.date.getTime();
+      let timeDifference = Math.abs(dateNow - signUpDate);
+      if (timeDifference >= 60000) {
+        inactiveUser.expired = true;
+        inactiveUser.save();
+      } else {
+        console.log("no expired users");
+      }
+    } else {
+      console.log("all users active");
+    }
+  });
+});
+*/
+
+cron.schedule("*/5 * * * * *", () => {
+  console.log("this message shows every 5 seconds");
+  User.updateMany(
+    {
+      $and: [
+        { active: false },
+        { date: Math.abs(Date.now() - User.date) >= 5000 },
+      ],
+    },
+    { expired: true }
+  );
+  /*}).then((inactiveUsers) => {
+    if (inactiveUsers) {
+      inactiveUsers.expired = true;
+      inactiveUsers.save();
+      console.log("inactive users flagged");
+    } else {
+      console.log("unable to find inactive users");
+    }
+  });*/
+});
+
+/*User.find({ expired: true }).then((err, docs) => {
+    if (err) {
+      console.log(err);
+    } else {
+      return;
+    }
+  }); */
 
 // -------- define smpt email settings for verification mail ------------
 
@@ -19,33 +74,6 @@ const transporter = nodemailer.createTransport({
   port: 25,
   secure: false,
 });
-
-// ---------- function for user verification check -------------
-/*
-const verify = () => {
-  User.findOne({ verificationEmailSent: false }).then((unverifiedUser) => {
-    if (unverifiedUser) {
-      const mailOptions = {
-        from: "cycleon2023@proton.me",
-        to: unverifiedUser.email,
-        subject: "cyCleon email verification",
-        text: `Please click the following link to verify your email adress: http://localhost:3000/verify?hash=${unverifiedUser.verificationHash}`,
-      };
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          return res.status(505).json({ verification: "unable to send email" });
-        } else {
-          unverifiedUser.verificationEmailSent = true;
-          unverifiedUser.save();
-          return res.status(205).json({ verification: "email sent" });
-        }
-      });
-    } else {
-      console.log("No users to verify");
-    }
-  });
-};
-*/
 
 // ----------- define function for verification hash creation -----------
 const verificationHash = () =>
@@ -94,8 +122,12 @@ appExpress.post("/register", (req, res) => {
         active: false,
         verificationHash: verificationHash(),
         verificationEmailSent: false,
+        date: Date.now(),
+        expired: false,
       });
       newUser.save();
+
+      //----------- define mail for email verification -------------
       const mailOptions = {
         from: "cycleon2023@proton.me",
         to: newUser.email,
@@ -152,7 +184,7 @@ appExpress.post("/verify", (req, res) => {
   User.findOne({ verificationHash: userHash }).then((verifiedUser) => {
     if (verifiedUser) {
       verifiedUser.active = true;
-      delete verifiedUser.verificationHash;
+      verifiedUser.verificationHash = undefined;
       verifiedUser.save();
       return res
         .status(220)
