@@ -8,64 +8,9 @@ const bcrypt = require("bcrypt");
 const cryptoJS = require("crypto-js");
 const nodemailer = require("nodemailer");
 const URL = require("url");
-const cron = require("node-cron");
 
 const appExpress = express();
 appExpress.use(parser.json());
-
-//                                  !!-------- Define CronJob for scheduled unregistered user deletion --------!!
-
-// ------- check for inactive users and flag as expired-----------
-/*
-cron.schedule("*5 * * * * *", () => {
-  console.log("this message shows every 5 seconds");
-  User.findOne({ active: false }).then((inactiveUser) => {
-    if (inactiveUser) {
-      let dateNow = Date.now();
-      let signUpDate = inactiveUser.date.getTime();
-      let timeDifference = Math.abs(dateNow - signUpDate);
-      if (timeDifference >= 60000) {
-        inactiveUser.expired = true;
-        inactiveUser.save();
-      } else {
-        console.log("no expired users");
-      }
-    } else {
-      console.log("all users active");
-    }
-  });
-});
-*/
-
-cron.schedule("*/5 * * * * *", () => {
-  console.log("this message shows every 5 seconds");
-  User.updateMany(
-    {
-      $and: [
-        { active: false },
-        { date: Math.abs(Date.now() - User.date) >= 5000 },
-      ],
-    },
-    { expired: true }
-  );
-  /*}).then((inactiveUsers) => {
-    if (inactiveUsers) {
-      inactiveUsers.expired = true;
-      inactiveUsers.save();
-      console.log("inactive users flagged");
-    } else {
-      console.log("unable to find inactive users");
-    }
-  });*/
-});
-
-/*User.find({ expired: true }).then((err, docs) => {
-    if (err) {
-      console.log(err);
-    } else {
-      return;
-    }
-  }); */
 
 // -------- define smpt email settings for verification mail ------------
 
@@ -123,7 +68,7 @@ appExpress.post("/register", (req, res) => {
         verificationHash: verificationHash(),
         verificationEmailSent: false,
         date: Date.now(),
-        expired: false,
+        createdAt: Date.now(),
       });
       newUser.save();
 
@@ -185,6 +130,7 @@ appExpress.post("/verify", (req, res) => {
     if (verifiedUser) {
       verifiedUser.active = true;
       verifiedUser.verificationHash = undefined;
+      verifiedUser.createdAt = undefined;
       verifiedUser.save();
       return res
         .status(220)
