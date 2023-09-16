@@ -191,17 +191,20 @@ select {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-image: url("/background.png");
+  background-size: cover;
+  background-position: center;
 }
 
 .header-map {
-  color: #333;
+  color: #f1f1f1;
   margin-bottom: 60px;
 }
 
 .map-embebed {
   width: 80%;
   height: 500px;
-  filter: invert(100%);
+  /*filter: invert(100%);*/
 }
 
 /* ---- Finish the css for the file "map.js" ---- */
@@ -300,6 +303,7 @@ select {
   box-sizing: border-box;
   font-family: "Kosugi_Maru", sans-serif;
 }
+
 .footer {
   margin: auto;
   text-align: center;

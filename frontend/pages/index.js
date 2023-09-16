@@ -3,6 +3,7 @@ import Button from "@/components/button";
 import Registrationbox from "@/components/registrationbox";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import Map from "@/components/map";
 import { useState } from "react";
 
 export default function Home() {
@@ -20,13 +21,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className="main">
-        <div className="map">
-          <br></br>
-          <br></br>
-          <a>place map here</a>
-          <br></br>
-          <br></br>
-        </div>
+        <Map />
       </main>
       <Footer />
     </>
