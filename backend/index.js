@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cryptoJS = require("crypto-js");
 const nodemailer = require("nodemailer");
-const URL = require("url");
 
 const appExpress = express();
 appExpress.use(parser.json());
