@@ -194,11 +194,13 @@ select {
   background-image: url("/background.png");
   background-size: cover;
   background-position: center;
+  padding-bottom: 60px;
 }
 
 .header-map {
   color: #f1f1f1;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 .map-embebed {
