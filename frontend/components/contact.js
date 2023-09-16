@@ -16,21 +16,25 @@ export default function contact() {
         <br />
         <input
           type="email"
-          id="name"
-          name="name"
+          id="email"
+          name="email"
           value="Your e mail address"
           required
         ></input>
+        <br />
+        <label for="message">Your message</label>
+        <br />
+        <input
+          type="text"
+          id="msg"
+          name="message"
+          value="feedback, suggestions or questions"
+          required
+        ></input>
+        <br />
+        <input class="inputButton" type="submit" value="Send"></input>
+        <input class="inputButton" type="reset" value="Reset form"></input>
       </form>
-      <label for="message">Your message</label>
-      <br />
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value="feedback, suggestions or questions"
-        required
-      ></input>
     </div>
   );
 }

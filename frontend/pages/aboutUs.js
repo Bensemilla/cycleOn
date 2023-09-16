@@ -12,22 +12,38 @@ export default function about() {
       </Head>
       <Navbar />
       <main className="main">
-        <h1>Who is team cycleOn?</h1>
+        <h1>Team cycleOn</h1>
         <p>
           Team cycleOn came together with one shared project idea:<br></br>
           Creating a companion to navigate through the bike lanes of Hamburg
         </p>
+        <br></br>
         <img src="/team.jpg" id="teampic"></img>
+        <br></br>
         <ul className="team">
-          <li className="team">Benjamin</li>
-          <li className="team">Bruno</li>
-          <li className="team">Carina</li>
-          <li className="team">
+          <li>
+            <a href="https://www.linkedin.com/in/konstantinmuenster/">
+              Konstantin
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/benjamin-schr%C3%B6der-b46521291/">
+              Benjamin
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/carina-brinkmann-aaa5a1219/">
+              Carina
+            </a>
+          </li>
+          <li>
             <a href="https://www.linkedin.com/in/sara-brandt-3a200b166/">
               Sara
             </a>
           </li>
-          <li className="team">and Mentor Konstantin</li>
+          <li>
+            <a href="https://www.linkedin.com/in/bruno-moschetto/"> Bruno</a>
+          </li>
         </ul>
       </main>
       <Footer />

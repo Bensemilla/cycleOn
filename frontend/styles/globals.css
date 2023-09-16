@@ -3,6 +3,18 @@
     color-scheme: dark;
   }
 }
+html,
+body,
+#__next {
+  width: 100%;
+  height: 100%;
+}
+#__next > main {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -12,6 +24,7 @@
   margin: auto;
   text-align: justify;
   overflow: scroll;
+  padding: 10px;
 }
 .header {
   display: flex;
@@ -309,10 +322,10 @@ select {
   text-align: center;
   background-color: #ffffff;
   color: #000000;
-  position: fixed;
   width: 100%;
   bottom: 0;
   height: auto;
+  padding: 10px;
 }
 #teampic {
   max-width: 100%;
@@ -320,8 +333,20 @@ select {
   border-radius: 8px;
 }
 .team {
-  display: inline;
-  align-items: center;
+  display: flex;
+  gap: 20px;
   list-style: none;
-  justify-content: space-between;
+  align-items: center;
+}
+.contactUs {
+  background-color: #fbfda3;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  padding: 10px;
+  opacity: 80%;
+}
+#msg {
+  resize: vertical;
 }
