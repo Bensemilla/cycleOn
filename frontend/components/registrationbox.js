@@ -16,20 +16,38 @@ export default function Registrationbox() {
   const [email, setEmail] = React.useState("");
   const [secret, setSecret] = React.useState("");
   const [secretver, setSecretver] = React.useState("");
+  const [error, setError] = React.useState("");
 
   const submit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/register", {
-      method: "POST",
-      body: JSON.stringify({
-        userName: username,
-        name,
-        email,
-        password: secret,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-    const data = await response.json();
+    const errorMessage = checkPassword();
+    if (errorMessage) {
+      setError(errorMessage);
+    } else {
+      setError("Password matches!");
+      const response = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        body: JSON.stringify({
+          userName: username,
+          name,
+          email,
+          password: secret,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await response.json();
+    }
+  };
+
+  const checkPassword = () => {
+    // If password not entered
+    if (secret == "") return "Please enter Password";
+    // If confirm password not entered
+    else if (secretver == "") return "Please enter confirm password";
+    // If Not same return False.
+    else if (secret != secretver) {
+      return "Password did not match.\n Please try again...";
+    }
   };
 
   return (
@@ -132,9 +150,23 @@ export default function Registrationbox() {
               }}
               required
             />
-            {/* CHECK IF pw-field & pw-verification-field have the same content */}
-            {/* need help with if function here*/}
-            conditional rendering https://react.dev/learn/conditional-rendering
+            {/* CHECK IF pw-field & pw-verification-field have the same content*/}
+            {error ? (
+              <div className="pwAlert">
+                <div className="pwAlertIcon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="1.5rem"
+                    width="1.5rem"
+                    fill="white"
+                    viewBox="0 0 512 512"
+                  >
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
+                  </svg>
+                </div>
+                <div>{error}</div>
+              </div>
+            ) : null}
             <br />
             <br />
             <br />
