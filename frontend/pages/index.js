@@ -18,18 +18,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <Navbar />
-        <div className="content">
-          <div className="map">
-            <br></br>
-            <br></br>
-            <a>place map here</a>
-            <br></br>
-            <br></br>
-          </div>
-          <Button onClick={boxAppear} />
-          {showBox === true ? <Registrationbox /> : null}
+      <Navbar />
+      <main className="main">
+        <div className="map">
+          <br></br>
+          <br></br>
+          <a>place map here</a>
+          <br></br>
+          <br></br>
         </div>
       </main>
       <Footer />
