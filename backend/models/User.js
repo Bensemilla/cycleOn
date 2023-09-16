@@ -34,7 +34,6 @@ const userSchema = new Schema({
   },
   date: {
     type: Date,
-    default: () => Date.now() + 2 * 60 * 60 * 1000,
   },
   active: {
     type: Boolean,
@@ -44,6 +43,10 @@ const userSchema = new Schema({
   },
   verificationEmailSent: {
     type: Boolean,
+  },
+  createdAt: {
+    type: Date,
+    expires: 60,
   },
 });
 
