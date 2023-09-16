@@ -1,6 +1,6 @@
 import { useState } from "react";
 export default function Registrationbox() {
-  const [tab, setTab] = useState("register");
+  const [tab, setTab] = useState("login");
   function showSignupTab() {
     setTab("register");
   }

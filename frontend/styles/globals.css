@@ -6,9 +6,12 @@
 .main {
   display: flex;
   flex-direction: column;
-  margin: 100px;
   align-items: center;
   justify-content: center;
+  max-width: 700px;
+  margin: auto;
+  text-align: justify;
+  overflow: scroll;
 }
 .header {
   display: flex;
@@ -96,6 +99,7 @@
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 /* Here starts the css for the registration form */
 .tab {
@@ -122,7 +126,7 @@ a {
   display: flex;
   flex-direction: column;
   width: 20%;
-  height: 700px;
+  height: auto;
   border: #000000;
   align-items: center;
   justify-content: center;
@@ -135,6 +139,7 @@ a {
   padding: 6px 12px;
   border: 1px solid #b1b371;
   border-top: none;
+  margin: auto;
 }
 input {
   padding: 10px 20px;
@@ -296,11 +301,27 @@ select {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: "Kosugi_Maru", sans-serif; */
-}
-.about {
-  max-width: 500px;
+  font-family: "Kosugi_Maru", sans-serif;
 }
 
 .footer {
+  margin: auto;
+  text-align: center;
+  background-color: #ffffff;
+  color: #000000;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: auto;
+}
+#teampic {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.team {
+  display: inline;
+  align-items: center;
+  list-style: none;
+  justify-content: space-between;
 }
