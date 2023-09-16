@@ -207,11 +207,13 @@ select {
   background-image: url("/background.png");
   background-size: cover;
   background-position: center;
+  padding-bottom: 60px;
 }
 
 .header-map {
   color: #f1f1f1;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 .map-embebed {
@@ -326,6 +328,22 @@ select {
   bottom: 0;
   height: auto;
   padding: 10px;
+}
+.pwAlert {
+  background-color: #000000;
+  color: #f2f2f2;
+  line-height: 1.2rem;
+  padding: 0.5rem 0rem 0.5rem 0.2rem;
+  max-width: 78%;
+  margin: 0 auto;
+  display: flex;
+  vertical-align: center;
+  align-items: center;
+  /*justify-content: center;*/
+}
+.pwAlertIcon {
+  padding-right: 0rem;
+  padding-left: 0.5rem;
 }
 #teampic {
   max-width: 100%;

@@ -11,6 +11,10 @@ const nodemailer = require("nodemailer");
 const appExpress = express();
 appExpress.use(parser.json());
 
+// -------- define CORS for frontend connection -----------
+const cors = require("cors");
+appExpress.use(cors());
+
 // -------- define smpt email settings for verification mail ------------
 
 const transporter = nodemailer.createTransport({
