@@ -3,6 +3,7 @@ import Button from "@/components/button";
 import Registrationbox from "@/components/registrationbox";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import Map from "@/components/map";
 import { useState } from "react";
 
 export default function Home() {
@@ -18,20 +19,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <Navbar />
-        <div className="content">
-          <div className="map">
-            <br></br>
-            <br></br>
-            <a>place map here</a>
-            <br></br>
-            <br></br>
-          </div>
-          <Button onClick={boxAppear} />
-          {showBox === true ? <Registrationbox /> : null}
-        </div>
-      </main>
+      <Navbar />
+
+      <Map />
+
       <Footer />
     </>
   );

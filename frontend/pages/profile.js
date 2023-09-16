@@ -16,7 +16,7 @@ export default function Map() {
           <img src="settings.png" className="setting-icon" />
           <img src="profile-pic.png" className="profile-pic" />
           <h3>John Reed</h3>
-          <p>Standart User</p>
+          <p>Standard User</p>
           <div className="social-media">
             <img src="instagram.png" />
             <img src="telegram.png" />

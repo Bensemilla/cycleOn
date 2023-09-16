@@ -21,12 +21,12 @@ export default function navbar() {
         <div className="navbar">
           <a href="/aboutCycleOn">What is cycleOn?</a>
           <a href="/aboutUs">Who is cycleOn?</a>
-          <a href="/profile">How can I use it?</a>
+          <a href="/profile">My cycleOn profile</a>
           <Button onClick={boxAppear} />
+          {showBox === true ? <Registrationbox /> : null}
           {/* With this we call the Button component from the components folder. Major B marks the component element. */}
         </div>
       </div>
-      {showBox === true ? <Registrationbox /> : null}
     </>
   );
 }
