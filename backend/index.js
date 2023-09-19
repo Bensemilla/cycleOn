@@ -121,7 +121,7 @@ appExpress.post("/login", async (req, res) => {
   }
 });
 
-// ------------- route to check for user verification ----------------
+// ------------- route for user verification ----------------
 
 appExpress.post("/verify", (req, res) => {
   const userHash = req.query.hash;
@@ -143,8 +143,30 @@ appExpress.post("/verify", (req, res) => {
 //rating routes
 // whenever I hit the endpoint /rating, this logic will be executed. Routes are equivalent to URL in browser
 
+// ----------- define middleware to link ratings to users ------------
+
+const tokenSecret = "yourSecretKey";
+const JWTAuth = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (authHeader) {
+    const token = authHeader.split(" ")[1];
+
+    jwt.verify(token, tokenSecret, (err, user) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+
+      req.user = user;
+      next();
+    });
+  } else {
+    res.sendStatus(401);
+  }
+};
+
 // POST - Create new rating
-appExpress.post("/rating", async (req, res) => {
+appExpress.post("/rating", JWTAuth, async (req, res) => {
   const { roadname, rating, comments } = req.body;
 
   try {
