@@ -21,6 +21,9 @@ const ratingSchema = mongoose.Schema(
         "Es können maximal 100 Zeichen genutzt werden. Kürze den Text.",
       ],
     },
+    ratingFromUser: {
+      type: String,
+    },
   },
   {
     timestamps: true, //mongoose adds timestamp for adding & modification dates

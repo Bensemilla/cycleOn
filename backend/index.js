@@ -143,7 +143,7 @@ appExpress.post("/verify", (req, res) => {
 //rating routes
 // whenever I hit the endpoint /rating, this logic will be executed. Routes are equivalent to URL in browser
 
-// ----------- define middleware to link ratings to users ------------
+// ----------- define middleware to authenticate and link ratings to users ------------
 
 const tokenSecret = "yourSecretKey";
 const JWTAuth = (req, res, next) => {
@@ -156,7 +156,7 @@ const JWTAuth = (req, res, next) => {
       if (err) {
         return res.sendStatus(403);
       }
-
+      console.log(user);
       req.user = user;
       next();
     });
@@ -170,7 +170,13 @@ appExpress.post("/rating", JWTAuth, async (req, res) => {
   const { roadname, rating, comments } = req.body;
 
   try {
-    const Rating1 = new Rating({ roadname, rating, comments });
+    const Rating1 = new Rating({
+      roadname,
+      rating,
+      comments,
+      ratingFromUser: req.user.user.userName,
+    });
+    console.log(req.user.user.userName);
     await Rating1.save(); // rating.save wird autom. asynchron geladen (was autom. asynchron ist findet man in der jwlg. Doku vom Package, hier: Doku von Mongoose) & mit await mache ich es wieder synchron
     res.send(Rating1);
   } catch (error) {
@@ -180,7 +186,7 @@ appExpress.post("/rating", JWTAuth, async (req, res) => {
 });
 
 // PUT - Update rating
-appExpress.put("/rating", async (req, res) => {
+appExpress.put("/rating", JWTAuth, async (req, res) => {
   const { roadname, rating, comments, id } = req.body;
   try {
     const response = await Rating.findByIdAndUpdate(id, {
@@ -195,7 +201,7 @@ appExpress.put("/rating", async (req, res) => {
 });
 
 // GET - Show all ratings for every street
-appExpress.get("/rating", async (req, res) => {
+appExpress.get("/rating", JWTAuth, async (req, res) => {
   try {
     const allRatings = await Rating.find({});
     res.json(allRatings);
@@ -207,7 +213,7 @@ appExpress.get("/rating", async (req, res) => {
 
 // DELETE - Delete rating
 
-appExpress.delete("/rating", async (req, res) => {
+appExpress.delete("/rating", JWTAuth, async (req, res) => {
   const { roadname, rating, comments, id } = req.body;
   try {
     const response = await Rating.findByIdAndDelete(id);
