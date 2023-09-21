@@ -54,7 +54,7 @@ appExpress.post("/register", (req, res) => {
     if (user) {
       // respond with a 400 error if email already exists
       return res
-        .status(400)
+        .status(500)
         .json({ email: "email already registered or username already in use" });
     }
     // !! -------- check for username here ----------- !!
@@ -84,11 +84,11 @@ appExpress.post("/register", (req, res) => {
       };
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-          return res.status(505).json({ verification: "unable to send email" });
+          return res.status(500).json({ verification: "unable to send email" });
         } else {
           newUser.verificationEmailSent = true;
           newUser.save();
-          return res.status(205).json({ verification: "email sent" });
+          return res.status(200).json({ verification: "email sent" });
         }
       });
       return res.status(200).json({ msg: newUser });
@@ -136,10 +136,10 @@ appExpress.post("/verify", (req, res) => {
       verifiedUser.createdAt = undefined;
       verifiedUser.save();
       return res
-        .status(220)
+        .status(200)
         .json({ verification: "User successfully verified" });
     } else {
-      return res.status(600).json({ verification: "user not found" });
+      return res.status(500).json({ verification: "user not found" });
     }
   });
 });
@@ -191,16 +191,20 @@ appExpress.post("/rating", JWTAuth, async (req, res) => {
 
 // PUT - Update rating
 appExpress.put("/rating", JWTAuth, async (req, res) => {
-  const { roadname, rating, comments, id } = req.body;
-  try {
-    const response = await Rating.findByIdAndUpdate(id, {
-      rating: req.body.rating,
-      comments: req.body.comments,
-    });
-    res.send(response);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send(error);
+  const { roadname, rating, comments, ratingFromUser, id } = req.body;
+  if (Rating.ratingFromUser === req.user.user.userName) {
+    try {
+      const response = await Rating.findByIdAndUpdate(id, {
+        rating: req.body.rating,
+        comments: req.body.comments,
+      });
+      res.send(response);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+    }
+  } else {
+    res.status(401).send("unable to update ratings of other users");
   }
 });
 
@@ -218,13 +222,17 @@ appExpress.get("/rating", JWTAuth, async (req, res) => {
 // DELETE - Delete rating
 
 appExpress.delete("/rating", JWTAuth, async (req, res) => {
-  const { roadname, rating, comments, id } = req.body;
-  try {
-    const response = await Rating.findByIdAndDelete(id);
-    res.send(response);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send(error);
+  const { roadname, rating, comments, ratingFromUser, id } = req.body;
+  if (Rating.ratingFromUser === req.user.user.userName) {
+    try {
+      const response = await Rating.findByIdAndDelete(id);
+      res.send(response);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+    }
+  } else {
+    res.status(401).send("unable to delete ratings of other users");
   }
 });
 
