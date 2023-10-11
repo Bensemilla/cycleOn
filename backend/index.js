@@ -28,7 +28,9 @@ const verificationHash = () =>
   require("crypto").randomBytes(16).toString("hex");
 
 // -------------- conect to database and test connection ----------------
-mongoose.connect("mongodb://127.0.0.1:27017");
+mongoose.connect(
+  "mongodb+srv://admin:lTGLDYsLGKXjlTyZ@cycleon.57mwgcv.mongodb.net/?retryWrites=true&w=majority"
+);
 mongoose.connection.on("error", (error) => {
   console.log("DB error!");
 });
