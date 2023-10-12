@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cryptoJS = require("crypto-js");
 const nodemailer = require("nodemailer");
+const env = require("dotenv").config();
 
 const appExpress = express();
 appExpress.use(parser.json());
@@ -28,8 +29,12 @@ const verificationHash = () =>
   require("crypto").randomBytes(16).toString("hex");
 
 // -------------- conect to database and test connection ----------------
+
+const dbUser = process.env.DATABASE_USER;
+const dbPassword = process.env.DATABASE_PASSWORD;
+const dbCluster = process.env.DATABASE_CLUSTER;
 mongoose.connect(
-  "mongodb+srv://admin:lTGLDYsLGKXjlTyZ@cycleon.57mwgcv.mongodb.net/?retryWrites=true&w=majority"
+  `mongodb+srv://${dbUser}:${dbPassword}@${dbCluster}.57mwgcv.mongodb.net/?retryWrites=true&w=majority`
 );
 mongoose.connection.on("error", (error) => {
   console.log("DB error!");
