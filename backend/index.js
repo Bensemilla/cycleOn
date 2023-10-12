@@ -107,7 +107,7 @@ appExpress.post("/login", async (req, res) => {
       throw Error();
     }
     if (bcrypt.compareSync(password, user.password)) {
-      const token = jwt.sign({ user }, "yourSecretKey", {
+      const token = jwt.sign({ user }, process.env.JWT_KEY, {
         expiresIn: "24h",
       });
 
@@ -149,7 +149,7 @@ appExpress.post("/verify", (req, res) => {
 
 // ----------- define middleware to authenticate and link ratings to users ------------
 
-const tokenSecret = "yourSecretKey";
+const tokenSecret = process.env.JWT_KEY;
 const JWTAuth = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
