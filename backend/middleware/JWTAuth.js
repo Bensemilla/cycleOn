@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
-
+const env = require("dotenv").config();
 const tokenSecret = process.env.JWT_KEY;
+
 const JWTAuth = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -20,6 +21,9 @@ const JWTAuth = (req, res, next) => {
   }
 };
 
+module.exports = JWTAuth;
+
+/*
 module.exports = (req, res, next) => {
   const { token } = req.cookies;
   if (token) {
@@ -28,3 +32,4 @@ module.exports = (req, res, next) => {
   }
   next();
 };
+*/

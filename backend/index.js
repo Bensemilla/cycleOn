@@ -8,14 +8,18 @@ const bcrypt = require("bcrypt");
 const cryptoJS = require("crypto-js");
 const nodemailer = require("nodemailer");
 const env = require("dotenv").config();
+const JWTAuth = require("./middleware/JWTAuth");
+const ratingRoutes = require("./routes/ratings");
+const userRoutes = require("./routes/users");
 
 const appExpress = express();
 appExpress.use(parser.json());
+appExpress.use("/rating", ratingRoutes);
+//appExpress.use("/users", userRoutes);
 
 // -------- define CORS for frontend connection -----------
 const cors = require("cors");
 appExpress.use(cors());
-
 // -------- define smpt email settings for verification mail ------------
 
 const transporter = nodemailer.createTransport({
@@ -155,7 +159,7 @@ appExpress.post("/verify", (req, res) => {
 // whenever I hit the endpoint /rating, this logic will be executed. Routes are equivalent to URL in browser
 
 // ----------- define middleware to authenticate and link ratings to users ------------
-
+/*
 const tokenSecret = process.env.JWT_KEY;
 const JWTAuth = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -178,7 +182,7 @@ const JWTAuth = (req, res, next) => {
 
 // POST - Create new rating
 appExpress.post("/rating", JWTAuth, async (req, res) => {
-  const { roadname, rating, comments } = req.body;
+  const { roadname, rating, comments, ratingFromUser } = req.body;
 
   try {
     const Rating1 = new Rating({
@@ -234,7 +238,7 @@ appExpress.delete("/rating", JWTAuth, async (req, res) => {
     res.status(500).send(error);
   }
 });
-
+*/
 /* 1x zum erstellen(post), 1x zum lesen (get), 1x zum updaten (put), 1x zum löschen (delete)
 bei update (put) muss man rausfinden, welches rating geupdated werden soll mittels ID -> findById Funktion */
 

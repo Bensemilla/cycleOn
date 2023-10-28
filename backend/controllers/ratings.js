@@ -4,7 +4,7 @@ const User = require("../models/User");
 //Create a Rating
 
 const createRating = async (req, res) => {
-  const { roadname, rating, comments } = req.body;
+  const { roadname, rating, comments, ratingFromUser } = req.body;
   try {
     const Rating1 = new Rating({
       roadname,
