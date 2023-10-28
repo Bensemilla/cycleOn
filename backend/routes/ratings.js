@@ -7,13 +7,19 @@ const router = express.Router();
 
 /*
 createRating
-updateRating
-showRatings
-deleteRating
+updateRating .put
+showRatings .get
+deleteRating .delete
 */
 
 // CREATE /rating
 
 router.post("/", JWTAuth, ratingsController.createRating);
+
+router.put("/", JWTAuth, ratingsController.updateRating);
+
+router.get("/", ratingsController.showRatings);
+
+router.delete("/", JWTAuth, ratingsController.deleteRating);
 
 module.exports = router;
