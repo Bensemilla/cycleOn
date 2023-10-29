@@ -41,9 +41,6 @@ const userSchema = new Schema({
   verificationHash: {
     type: String,
   },
-  verificationEmailSent: {
-    type: Boolean,
-  },
   createdAt: {
     type: Date,
     expires: 60,
