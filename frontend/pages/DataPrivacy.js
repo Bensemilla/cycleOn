@@ -81,7 +81,8 @@ export default function Data() {
           <br />
           <ol>
             For inquiries, concerns, or data-related requests, please reach out
-            to us at [Insert Contact Information].
+            to <a href="mailto: cycleon2023@proton.me">via e-mail</a> or using
+            the contact form.
           </ol>
           <br />
           By registering and using CycleOn, you acknowledge understanding and
@@ -91,12 +92,12 @@ export default function Data() {
           Sincerely, your cycleOn team
         </div>
         <br />
-        <h3>
+        <h4>
           Please drop us a message in case you encounter any bugs, issues or
           have any concerns about our WebApp.
-        </h3>
+        </h4>
         <br />
-        <h4>Effective Date: 22. September 2023</h4>
+        <h5>Effective Date: 22. September 2023</h5>
         <br />
         <div className="Contact">
           <p>
