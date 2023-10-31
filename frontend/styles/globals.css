@@ -368,3 +368,6 @@ select {
 #msg {
   resize: vertical;
 }
+#teamButton {
+  padding: 10px;
+}

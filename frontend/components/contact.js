@@ -2,7 +2,10 @@ export default function contact() {
   return (
     <div className="contactUs">
       <form>
-        <p>Questions? Suggestions? Feedback? Drop us a note below:</p>
+        <p>
+          Questions? Suggestions? Feedback? <br />
+          Drop us a note below:
+        </p>
         <label for="name"></label>
         <br />
         <input
