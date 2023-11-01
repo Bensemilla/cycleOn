@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const env = require("dotenv").config();
+require("dotenv").config();
 const tokenSecret = process.env.JWT_KEY;
 
 const JWTAuth = (req, res, next) => {
@@ -12,7 +12,6 @@ const JWTAuth = (req, res, next) => {
       if (err) {
         return res.sendStatus(403);
       }
-      console.log(user);
       req.user = user;
       next();
     });
