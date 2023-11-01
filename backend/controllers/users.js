@@ -1,21 +1,20 @@
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
-const cryptoJS = require("crypto-js");
+const crypto = require("crypto");
 const bcrypt = require("bcrypt");
-const env = require("dotenv").config();
+require("dotenv").config();
 
 // -------- define smpt email settings for verification mail ------------
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.freesmtpservers.com",
-  port: 25,
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
   secure: false,
 });
 
 // ----------- define function for verification hash creation -----------
-const verificationHash = () =>
-  require("crypto").randomBytes(16).toString("hex");
+const verificationHash = () => crypto.randomBytes(16).toString("hex");
 
 // ------------ USER REGISTRATION ROUTE: -------------
 

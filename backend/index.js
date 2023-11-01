@@ -1,15 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const User = require("./models/User");
-const Rating = require("./models/ratingModel");
 const parser = require("body-parser");
-const cryptoJS = require("crypto-js");
-const env = require("dotenv").config();
-const JWTAuth = require("./middleware/JWTAuth");
 const ratingRoutes = require("./routes/ratings");
 const usersRoutes = require("./routes/users");
-
 const appExpress = express();
+require("dotenv").config();
 appExpress.use(parser.json());
 appExpress.use("/rating", ratingRoutes);
 appExpress.use("/users", usersRoutes);
