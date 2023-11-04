@@ -28,7 +28,7 @@ const userRegister = (req, res) => {
       // respond with a 400 error if email already exists
       return res
         .status(400)
-        .json({ email: "email already registered or username already in use" });
+        .json({ error: "email already registered or username already in use" });
     }
     // !! -------- check for username here ----------- !!
     else {
@@ -98,7 +98,7 @@ const userLogin = async (req, res) => {
 
 // ------------- route for user verification ----------------
 
-const userVerify = (req, res) => {
+const userVerify = async (req, res) => {
   const userHash = req.query.hash;
   User.findOne({ verificationHash: userHash }).then((verifiedUser) => {
     if (verifiedUser) {
@@ -115,6 +115,19 @@ const userVerify = (req, res) => {
   });
 };
 
+// ------------- route for user deletion ability -----------------
+
+const userDelete = async (req, res) => {
+  try {
+    await User.findOneAndDelete({ _id: req.body });
+    res.send("User deleted");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("user not found");
+  }
+};
+
 exports.userRegister = userRegister;
 exports.userLogin = userLogin;
 exports.userVerify = userVerify;
+exports.userDelete = userDelete;
