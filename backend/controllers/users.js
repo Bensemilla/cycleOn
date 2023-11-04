@@ -62,7 +62,7 @@ const userRegister = (req, res) => {
           return res.status(205).json({ verification: "email sent" });
         }
       });
-      return res.status(200).json({ msg: newUser });
+      res.send(newUser);
     }
   });
 };
