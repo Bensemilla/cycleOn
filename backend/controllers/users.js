@@ -51,7 +51,7 @@ const userRegister = (req, res) => {
       const mailOptions = {
         from: "cycleon2023@proton.me",
         to: newUser.email,
-        subject: "cyCleon email verification",
+        subject: "cycleOn email verification",
         text: `Please click the following link to verify your email adress: http://localhost:3000/users/verify?hash=${newUser.verificationHash}`,
       };
       transporter.sendMail(mailOptions, (error, info) => {
@@ -119,7 +119,7 @@ const userVerify = async (req, res) => {
 
 const userDelete = async (req, res) => {
   try {
-    await User.findOneAndDelete({ _id: req.body });
+    await User.findOneAndDelete({ _id: req.user.user._id });
     res.send("User deleted");
   } catch (error) {
     console.error(error);
