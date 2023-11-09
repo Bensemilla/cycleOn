@@ -28,7 +28,7 @@ const userRegister = (req, res) => {
       // respond with a 400 error if email already exists
       return res
         .status(400)
-        .json({ email: "email already registered or username already in use" });
+        .json({ error: "email already registered or username already in use" });
     }
     // !! -------- check for username here ----------- !!
     else {
@@ -51,7 +51,7 @@ const userRegister = (req, res) => {
       const mailOptions = {
         from: "cycleon2023@proton.me",
         to: newUser.email,
-        subject: "cyCleon email verification",
+        subject: "cycleOn email verification",
         text: `Please click the following link to verify your email adress: http://localhost:3000/users/verify?hash=${newUser.verificationHash}`,
       };
       transporter.sendMail(mailOptions, (error, info) => {
@@ -98,7 +98,7 @@ const userLogin = async (req, res) => {
 
 // ------------- route for user verification ----------------
 
-const userVerify = (req, res) => {
+const userVerify = async (req, res) => {
   const userHash = req.query.hash;
   User.findOne({ verificationHash: userHash }).then((verifiedUser) => {
     if (verifiedUser) {
@@ -115,6 +115,23 @@ const userVerify = (req, res) => {
   });
 };
 
+// ------------- route for user deletion ability -----------------
+
+const userDelete = async (req, res) => {
+  try {
+    const existingUser = await User.findOneAndDelete({
+      _id: req.user.user._id,
+    });
+    if (!existingUser) {
+      return res.send("user not found");
+    }
+    res.send("User deleted");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 exports.userRegister = userRegister;
 exports.userLogin = userLogin;
 exports.userVerify = userVerify;
+exports.userDelete = userDelete;
