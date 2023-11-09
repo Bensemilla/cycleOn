@@ -119,11 +119,15 @@ const userVerify = async (req, res) => {
 
 const userDelete = async (req, res) => {
   try {
-    await User.findOneAndDelete({ _id: req.user.user._id });
+    const existingUser = await User.findOneAndDelete({
+      _id: req.user.user._id,
+    });
+    if (!existingUser) {
+      return res.send("user not found");
+    }
     res.send("User deleted");
   } catch (error) {
     console.error(error);
-    res.status(500).send("user not found");
   }
 };
 
