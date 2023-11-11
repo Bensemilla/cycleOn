@@ -201,6 +201,87 @@ select {
   border-radius: 3px;
   cursor: pointer;
 }
+/* Here starts the css for the ranking form */
+
+.container-rate {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: auto;
+  border: #000000;
+  align-items: center;
+  justify-content: center;
+  background: #fbfda3;
+  text-align: center;
+  color: #000000;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 20px;
+  padding: 6px 12px;
+  border: 1px solid #b1b371;
+  border-top: none;
+  margin-top: 600px;
+  list-style: none;
+}
+
+#route-selection {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  padding-top: 0px;
+}
+
+#route-selection > select {
+  background-color: white;
+  border: 2px solid #262626;
+  border-radius: 30px;
+  color: #000000;
+}
+
+#container-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#container-questionnaire {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#container-fields {
+  display: flex;
+  justify-content: space-between;
+}
+
+#container-fields p {
+  font-size: 0.7rem;
+}
+
+#container-points {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  font-size: 0.9rem;
+}
+
+#container-points li {
+  display: flex;
+  align-items: center;
+}
+
+.form > button {
+  border: 2px solid #262626;
+  background-color: white;
+  border-radius: 30px;
+  padding: 5px;
+  margin-top: 20px;
+  color: #000000
+}
+
 /* ---- Below this line starts the css for the file "map.js" ---- */
 
 .container-map {
@@ -229,6 +310,27 @@ select {
 }
 
 /* ---- Finish the css for the file "map.js" ---- */
+
+.container-box {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: auto;
+  border: #000000;
+  align-items: center;
+  justify-content: center;
+  background: #fbfda3;
+  opacity: 90%;
+  text-align: center;
+  color: #000000;
+  position: absolute;
+  border-radius: 20px;
+  padding: 6px 12px;
+  border: 1px solid #b1b371;
+  border-top: none;
+  margin: auto;
+}
 
 /* ---- Below this line starts the css for the file "profile.js" ---- */
 
