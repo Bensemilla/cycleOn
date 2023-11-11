@@ -46,6 +46,7 @@ export default function about() {
           </li>
         </ul>
       </main>
+      <Contact />
       <Footer />
     </>
   );
