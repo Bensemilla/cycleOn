@@ -1,7 +1,12 @@
 export default function contact() {
   return (
-    <div className="contactUs">
+    <div className="container-contact">
       <form>
+        {/*         <button
+          className="close" onclick={document.getElementById(container-contact).style.display='none'}
+        >
+          X
+        </button> */}
         <p>
           Questions? Suggestions? Feedback? <br />
           Drop us a note below:
@@ -27,16 +32,12 @@ export default function contact() {
         <br />
         <label for="message">Your message</label>
         <br />
-        <input
-          type="text"
-          id="msg"
-          name="message"
-          value="feedback, suggestions or questions"
-          required
-        ></input>
+        <textarea className="messages" name="message" rows="10" cols="20">
+          Your feedback, suggestions or questions
+        </textarea>
         <br />
-        <input class="inputButton" type="submit" value="Send"></input>
-        <input class="inputButton" type="reset" value="Reset form"></input>
+        <input className="inputButton" type="submit" value="Send"></input>
+        <input className="inputButton" type="reset" value="Reset form"></input>
       </form>
     </div>
   );

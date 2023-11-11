@@ -141,24 +141,29 @@ a {
   background-color: #b1b371;
 }
 .container-box {
-  z-index: 2;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 25%;
   height: auto;
+  opacity: 90%;
   border: #000000;
   align-items: center;
   justify-content: center;
   background: #fbfda3;
-  opacity: 90%;
-  text-align: center;
   color: #000000;
-  position: absolute;
-  border-radius: 20px;
+  text-align: center;
+  padding: 40px 90px;
+  color: #262626;
   padding: 6px 12px;
   border: 1px solid #b1b371;
-  border-top: none;
-  margin: auto;
+  margin: 20 auto;
+  position: fixed;
+  top: 10%;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 input {
   padding: 10px 20px;
@@ -376,4 +381,72 @@ select {
 }
 #teamButton {
   padding: 10px;
+}
+.contactbutton {
+  display: flex;
+  flex-direction: row;
+  max-height: 80px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(251, 253, 163, 1) 30%
+  );
+  color: #262626;
+  margin: auto;
+  align-content: flex-end;
+  border: 0px;
+  padding: 0px;
+  cursor: pointer;
+  align-items: center;
+  width: 300px;
+  position: relative;
+}
+.contactbutton div {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  background: #000000;
+}
+.contactbutton p {
+  padding: 20px;
+  width: calc(100% - 30%);
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+}
+.contactbutton img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.container-contact {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: auto;
+  opacity: 90%;
+  border: #000000;
+  align-items: center;
+  justify-content: center;
+  background: #fbfda3;
+  color: #000000;
+  text-align: center;
+  padding: 40px 90px;
+  color: #262626;
+  padding: 6px 12px;
+  border: 1px solid #b1b371;
+  margin: 20 auto;
+  position: fixed;
+  bottom: 30%;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.messages {
+  resize: vertical;
 }
