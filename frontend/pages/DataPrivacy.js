@@ -80,9 +80,11 @@ export default function Data() {
           </ol>
           <br />
           <ol>
-            For inquiries, concerns, or data-related requests, please reach out
-            to <a href="mailto: cycleon2023@proton.me">via e-mail</a> or using
-            the contact form.
+            For inquiries, concerns, or data-related requests,{" "}
+            <a href="mailto: cycleon2023@proton.me">
+              click here to drop us an e-mail{" "}
+            </a>
+            or using the contact form.
           </ol>
           <br />
           By registering and using CycleOn, you acknowledge understanding and
