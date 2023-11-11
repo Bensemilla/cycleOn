@@ -1,8 +1,18 @@
 import Head from "next/head";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import Contact from "@/components/contact";
+import Button from "@/components/button";
+import ContactButton from "@/components/contactButton";
+import { useState } from "react";
+import contact from "@/components/contact";
 
 export default function about() {
+  const [showContact, setShowContact] = useState(false);
+  function contactAppear() {
+    setShowContact(true);
+  }
+
   return (
     <>
       <Head>
@@ -46,7 +56,8 @@ export default function about() {
           </li>
         </ul>
       </main>
-      <Contact />
+      <ContactButton onClick={contactAppear} />
+      {showContact === true ? <Contact /> : null}
       <Footer />
     </>
   );

@@ -13,7 +13,6 @@ export default function navbar() {
 
   function boxAppear() {
     setShowBox(true);
-    console.log("test");
   }
 
   function ratingAppear() {
