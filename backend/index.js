@@ -7,7 +7,7 @@ const appExpress = express();
 require("dotenv").config();
 appExpress.use(parser.json());
 appExpress.use("/rating", ratingRoutes);
-appExpress.use("/users", usersRoutes);
+appExpress.use("/user", usersRoutes);
 
 // -------- define CORS for frontend connection -----------
 const cors = require("cors");
