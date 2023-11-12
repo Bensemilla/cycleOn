@@ -1,11 +1,11 @@
 export default function Fields({field}) {
   return (
-    <li id="container-fields">
-      <div id="container-heading">
+    <li className="container-fields">
+      <div className="container-heading">
         <h4>{field.heading.toUpperCase()}</h4>
         <p>{field.question}</p>
       </div>  
-      <div id="container-points">
+      <div className="container-points">
         <li>
             <label for={field.heading.toLowerCase() + "-1"}>1</label>
             <input type="radio" id={field.heading.toLowerCase() + "-1"} name={field.heading.toLowerCase()} value="1"/>
