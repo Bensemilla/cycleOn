@@ -234,7 +234,7 @@ select {
   color: #000000;
 }
 
-#container-heading {
+.container-heading {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -246,23 +246,23 @@ select {
   gap: 10px;
 }
 
-#container-fields {
+.container-fields {
   display: flex;
   justify-content: space-between;
 }
 
-#container-fields p {
+.container-fields p {
   font-size: 0.7rem;
 }
 
-#container-points {
+.container-points {
   display: flex;
   width: 50%;
   justify-content: space-around;
   font-size: 0.9rem;
 }
 
-#container-points li {
+.container-points li {
   display: flex;
   align-items: center;
 }
