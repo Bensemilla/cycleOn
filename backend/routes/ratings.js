@@ -1,6 +1,6 @@
 const express = require("express");
 const JWTAuth = require("../middleware/JWTAuth");
-const ratingDataValidation = require("../middleware/ratingDataValidation");
+const ratingDataValidation = require("../middleware/ratingDataValidation.js");
 const ratingsController = require("../controllers/ratings");
 const router = express.Router();
 

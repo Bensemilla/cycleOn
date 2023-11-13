@@ -18,7 +18,7 @@ const ratingDataValidation = [
   body("comments")
     .exists()
     .isLength({ max: 100 })
-    .withMessage("Maximum 100 chracters allowed")
+    .withMessage("Maximum 100 characters allowed")
     .optional()
     .isString()
     .withMessage("Comment must be a string")
