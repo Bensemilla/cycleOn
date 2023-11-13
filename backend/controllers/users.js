@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
+const { validationResult } = require("express-validator");
 require("dotenv").config();
 
 // -------- define smpt email settings for verification mail ------------
@@ -31,6 +32,16 @@ const userRegister = async (req, res) => {
         .status(400)
         .json({ error: "email already registered or username already in use" });
     }
+    // !! -------- check validation results for any errors: ----------!!
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        errors: errors.array(),
+      });
+    }
+
     // !! -------- check for username here ----------- !!
     {
       //create new user
@@ -39,7 +50,7 @@ const userRegister = async (req, res) => {
         userName: req.body.userName,
         email: req.body.email,
         password: req.body.password,
-        age: req.body.age,
+        dateOfBirth: req.body.dateOfBirth,
         bikeType: req.body.bikeType,
         active: false,
         verificationHash: verificationHash(),

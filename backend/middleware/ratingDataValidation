@@ -1,0 +1,21 @@
+const { body } = require("express-validator");
+
+const ratingDataValidation = [
+  body("roadname")
+    .exists()
+    .withMessage("Roadname required")
+    .isString()
+    .withMessage("Name must be a string"),
+  body("rating")
+    .exists()
+    .withMessage("Rating is required")
+    .isInt()
+    .withMessage("Rating must be an integer"),
+  body("comments")
+    .exists()
+    .optional()
+    .isString()
+    .withMessage("Comment must be a string"),
+];
+
+module.exports = ratingDataValidation;

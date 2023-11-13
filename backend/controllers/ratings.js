@@ -1,5 +1,5 @@
 const Rating = require("../models/ratingModel");
-const User = require("../models/User");
+const { validationResult } = require("express-validator");
 
 //Create a Rating
 
@@ -15,6 +15,16 @@ const createRating = async (req, res) => {
   } else {
     const { roadname, rating, comments } = req.body;
     try {
+      //------- check for data validation errors --------
+
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({
+          success: false,
+          errors: errors.array(),
+        });
+      }
+
       const Rating1 = new Rating({
         roadname,
         rating,

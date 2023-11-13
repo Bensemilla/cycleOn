@@ -24,8 +24,8 @@ const userSchema = mongoose.Schema({
     required: true,
     set: setPassword,
   },
-  age: {
-    type: Number,
+  dateOfBirth: {
+    type: Date,
   },
   bikeType: {
     type: String,
@@ -41,7 +41,7 @@ const userSchema = mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    expires: 60,
+    expires: 30,
   },
 });
 
