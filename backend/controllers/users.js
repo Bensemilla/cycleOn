@@ -103,7 +103,7 @@ const userLogin = async (req, res) => {
         message: "user logged in successfully",
       });
     } else {
-      res.status(401).json({ msg: "unauthenticated" });
+      res.status(401).json({ msg: "wrong password" });
     }
   } catch (error) {
     console.error(error);
