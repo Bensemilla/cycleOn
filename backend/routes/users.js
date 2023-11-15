@@ -14,7 +14,7 @@ router.post("/login", userDataValidation, usersController.userLogin);
 // VERIFY USER /verify
 router.post(
   "/verify",
-  query("hash").isString().trim().escape(),
+  query("hash").notEmpty().trim().escape(),
   usersController.userVerify
 );
 
