@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
+const { validationResult } = require("express-validator");
 require("dotenv").config();
 
 // -------- define smpt email settings for verification mail ------------
@@ -18,27 +19,38 @@ const verificationHash = () => crypto.randomBytes(16).toString("hex");
 
 // ------------ USER REGISTRATION ROUTE: -------------
 
-const userRegister = (req, res) => {
+const userRegister = async (req, res) => {
   //Check if email already registered
 
-  User.findOne({
-    $or: [{ email: req.body.email }, { userName: req.body.userName }],
-  }).then((user) => {
+  try {
+    const user = await User.findOne({
+      $or: [{ email: req.body.email }, { userName: req.body.userName }],
+    });
     if (user) {
       // respond with a 400 error if email already exists
       return res
         .status(400)
         .json({ error: "email already registered or username already in use" });
     }
+    // !! -------- check validation results for any errors: ----------!!
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        errors: errors.array(),
+      });
+    }
+
     // !! -------- check for username here ----------- !!
-    else {
+    {
       //create new user
       const newUser = new User({
         name: req.body.name,
         userName: req.body.userName,
         email: req.body.email,
         password: req.body.password,
-        age: req.body.age,
+        dateOfBirth: req.body.dateOfBirth,
         bikeType: req.body.bikeType,
         active: false,
         verificationHash: verificationHash(),
@@ -49,10 +61,11 @@ const userRegister = (req, res) => {
 
       //----------- define mail for email verification -------------
       const mailOptions = {
-        from: "cycleon2023@proton.me",
+        from: process.env.EMAIL_OPTIONS_FROM,
         to: newUser.email,
-        subject: "cycleOn email verification",
-        text: `Please click the following link to verify your email adress: http://localhost:3000/users/verify?hash=${newUser.verificationHash}`,
+        subject: process.env.EMAIL_OPTIONS_SUBJECT,
+        text: process.env.EMAIL_OPTIONS_TEXT,
+        html: `<p>Click <a href="http://localhost:3000/user/verify?hash=${newUser.verificationHash}">here</a> to verify your account.</p>`,
       };
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
@@ -64,7 +77,9 @@ const userRegister = (req, res) => {
       });
       res.send(newUser);
     }
-  });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // ---------- USER LOGIN: ------------
@@ -88,7 +103,7 @@ const userLogin = async (req, res) => {
         message: "user logged in successfully",
       });
     } else {
-      res.status(401).json({ msg: "unauthenticated" });
+      res.status(401).json({ msg: "wrong password" });
     }
   } catch (error) {
     console.error(error);
