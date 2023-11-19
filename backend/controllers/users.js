@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
-require("dotenv").config();
 
 // -------- define smpt email settings for verification mail ------------
 
@@ -98,9 +97,14 @@ const userLogin = async (req, res) => {
       });
 
       res.json({
-        user,
-        token,
         message: "user logged in successfully",
+        user: {
+          id: user._id.toString(),
+          email: user.email,
+          userName: user.userName,
+          name: user.name,
+          token,
+        },
       });
     } else {
       res.status(401).json({ msg: "wrong password" });
