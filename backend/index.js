@@ -5,13 +5,15 @@ const ratingRoutes = require("./routes/ratings");
 const usersRoutes = require("./routes/users");
 const appExpress = express();
 require("dotenv").config();
-appExpress.use(parser.json());
-appExpress.use("/rating", ratingRoutes);
-appExpress.use("/user", usersRoutes);
 
 // -------- define CORS for frontend connection -----------
 const cors = require("cors");
-appExpress.use(cors());
+appExpress.use(cors({ origin: "http://localhost:2500", credentials: true }));
+
+appExpress.use(parser.json());
+
+appExpress.use("/rating", ratingRoutes);
+appExpress.use("/user", usersRoutes);
 
 // -------------- conect to database and test connection ----------------
 
