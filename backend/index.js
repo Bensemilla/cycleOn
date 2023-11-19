@@ -8,7 +8,7 @@ require("dotenv").config();
 
 // -------- define CORS for frontend connection -----------
 const cors = require("cors");
-appExpress.use(cors({ origin: "http://localhost:2500", credentials: true }));
+appExpress.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 
 appExpress.use(parser.json());
 
