@@ -13,7 +13,6 @@ export default function map() {
   return (
     <div className="container-map">
       <h1 className="header-map">Hamburg Velo Routes</h1>
-      {/*rank button goes here*/}
       <Ratingbutton onClick={ratingAppear} />
       {rateBox === true ? <Ratebox /> : null}
       <iframe
