@@ -56,7 +56,7 @@ const userRegister = async (req, res) => {
         date: Date.now(),
         createdAt: Date.now(),
       });
-      newUser.save();
+      await newUser.save();
 
       //----------- define mail for email verification -------------
       const mailOptions = {
@@ -66,7 +66,7 @@ const userRegister = async (req, res) => {
         text: process.env.EMAIL_OPTIONS_TEXT,
         html: `<p>Click <a href="http://localhost:3000/user/verify?hash=${newUser.verificationHash}">here</a> to verify your account.</p>`,
       };
-      transporter.sendMail(mailOptions, (error, info) => {
+      transporter.sendMail(mailOptions, (error) => {
         if (error) {
           return res.status(505).json({ verification: "unable to send email" });
         } else {
@@ -74,7 +74,6 @@ const userRegister = async (req, res) => {
           return res.status(205).json({ verification: "email sent" });
         }
       });
-      res.send(newUser);
     }
   } catch (error) {
     console.error(error);
