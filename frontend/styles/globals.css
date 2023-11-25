@@ -206,7 +206,11 @@ select {
   border-radius: 3px;
   cursor: pointer;
 }
+
 /* Here starts the css for the ranking form */
+.ratingbutton {
+  margin-bottom: 30px;
+}
 
 .container-rate {
   z-index: 2;
@@ -227,7 +231,7 @@ select {
   padding: 6px 12px;
   border: 1px solid #b1b371;
   border-top: none;
-  margin-top: 600px;
+  margin-top: 80px;
   list-style: none;
 }
 
