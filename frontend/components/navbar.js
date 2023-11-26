@@ -1,11 +1,18 @@
 import Button from "@/components/button";
 import Registrationbox from "@/components/registrationbox";
+import Ratingbutton from "@/components/ratingbutton";
+import Ratebox from "@/components/ratebox";
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 
 export default function navbar() {
   const { status } = useSession();
   const [showBox, setShowBox] = useState(false);
+  const [rateBox, setRateBox] = useState(false);
+
+  function ratingAppear() {
+    setRateBox(true);
+  }
 
   // showBox (false, true)
   // setShowBox(true)
@@ -27,6 +34,7 @@ export default function navbar() {
           {status === "authenticated" ? (
             <>
               <Ratingbutton onClick={ratingAppear} />
+              {rateBox === true ? <Ratebox /> : null}
               <button
                 className="logout"
                 onClick={() => signOut({ redirect: false })}
