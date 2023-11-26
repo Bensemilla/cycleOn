@@ -1,6 +1,8 @@
 import { useState } from "react";
 import React from "react";
-export default function Registrationbox() {
+import { signIn } from "next-auth/react";
+
+export default function Registrationbox({ hideBox }) {
   const [tab, setTab] = useState("register");
 
   function showSignupTab() {
@@ -18,28 +20,10 @@ export default function Registrationbox() {
   const [secretver, setSecretver] = React.useState("");
   const [error, setError] = React.useState("");
 
-  const submit = async (e) => {
-    e.preventDefault();
-    const errorMessage = checkPassword();
-    if (errorMessage) {
-      setError(errorMessage);
-    } else {
-      setError("Password matches!");
-      const response = await fetch("http://localhost:3000/register", {
-        method: "POST",
-        body: JSON.stringify({
-          userName: username,
-          name,
-          email,
-          password: secret,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await response.json();
-    }
-  };
+  const [loginName, setLoginName] = React.useState("");
+  const [loginSecret, setLoginSecret] = React.useState("");
 
-  const checkPassword = () => {
+  const checkSignUpPassword = () => {
     // If password not entered
     if (secret == "") return "Please enter Password";
     // If confirm password not entered
@@ -47,6 +31,44 @@ export default function Registrationbox() {
     // If Not same return False.
     else if (secret != secretver) {
       return "Password did not match.\n Please try again...";
+    }
+  };
+
+  const submitSignUp = async (e) => {
+    e.preventDefault();
+    const errorMessage = checkSignUpPassword();
+    if (errorMessage) {
+      setError(errorMessage);
+    } else {
+      setError("Password matches!");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/register`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            userName: username,
+            name,
+            email,
+            password: secret,
+          }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      const data = await response.json();
+    }
+  };
+
+  const submitLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await signIn("credentials", {
+        redirect: false,
+        email: loginName,
+        password: loginSecret,
+      });
+      hideBox();
+    } catch (error) {
+      console.error("Login failed", error);
     }
   };
 
@@ -58,8 +80,8 @@ export default function Registrationbox() {
       </div>
       {tab === "register" ? (
         <div className="register">
-          <form onSubmit={submit}>
-            <label for="name-field">How should we call you?</label>
+          <form onSubmit={submitSignUp}>
+            <label htmlFor="name-field">How should we call you?</label>
             <br />
             <input
               type="text"
@@ -73,7 +95,7 @@ export default function Registrationbox() {
             ></input>
             <br />
             <br />
-            <label for="user-field">Please enter a username:</label>
+            <label htmlFor="user-field">Please enter a username:</label>
             <br />
             <input
               type="text"
@@ -87,7 +109,7 @@ export default function Registrationbox() {
             ></input>
             <br />
             <br />
-            <label for="email-field">
+            <label htmlFor="email-field">
               Please enter your email address:
             </label>{" "}
             <br />
@@ -123,7 +145,7 @@ export default function Registrationbox() {
                 {/* How can I let the number for the age start at a certain level, i.e. 15 years ? */}
             <br />
             <br />
-            <label for="pw-field">Please choose a password</label> <br />
+            <label htmlFor="pw-field">Please choose a password</label> <br />
             <input
               type="password"
               id="pw-field"
@@ -136,7 +158,7 @@ export default function Registrationbox() {
             />
             <br />
             <br />
-            <label for="pw-verification-field">
+            <label htmlFor="pw-verification-field">
               Please verify your password
             </label>
             <br />
@@ -187,14 +209,33 @@ export default function Registrationbox() {
       ) : (
         <div className="login">
           <br />
-          <form>
-            <label for="username">Please enter your username</label> <br />
-            <input type="text" id="user" name="username" required></input>
-            <label for="pw">Please enter your password</label> <br />
-            <input type="password" id="pw" name="password" required></input>
+          <form onSubmit={submitLogin}>
+            <label htmlFor="email">Please enter your email address</label>{" "}
             <br />
-            <input class="inputButton" type="submit" value="Log in"></input>
-            <input class="inputButton" type="reset" value="Reset form"></input>
+            <input
+              type="email"
+              id="email"
+              name="Email Address"
+              value={loginName}
+              onChange={(e) => setLoginName(e.target.value)}
+              required
+            ></input>
+            <label htmlFor="pw">Please enter your password</label> <br />
+            <input
+              type="password"
+              id="pw"
+              name="password"
+              value={loginSecret}
+              onChange={(e) => setLoginSecret(e.target.value)}
+              required
+            ></input>
+            <br />
+            <input className="inputButton" type="submit" value="Log in"></input>
+            <input
+              className="inputButton"
+              type="reset"
+              value="Reset form"
+            ></input>
           </form>
         </div>
       )}
