@@ -39,9 +39,10 @@ const userSchema = mongoose.Schema({
   verificationHash: {
     type: String,
   },
+  // TTL index for verification link expiration, in seconds:
   createdAt: {
     type: Date,
-    // expires: 30,
+    expires: 10800,
   },
 });
 
