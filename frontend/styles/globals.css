@@ -208,10 +208,6 @@ select {
 }
 
 /* Here starts the css for the ranking form */
-.ratingbutton {
-  margin-bottom: 30px;
-}
-
 .container-rate {
   z-index: 2;
   display: flex;
@@ -233,6 +229,7 @@ select {
   border-top: none;
   margin-top: 80px;
   list-style: none;
+  opacity: 80%;
 }
 
 #route-selection {
@@ -288,7 +285,7 @@ select {
   border-radius: 30px;
   padding: 5px;
   margin-top: 20px;
-  color: #000000
+  color: #000000;
 }
 
 /* ---- Below this line starts the css for the file "map.js" ---- */
@@ -555,4 +552,17 @@ select {
 }
 .messages {
   resize: vertical;
+}
+.ratingbutton {
+  max-height: 80px;
+  background: rgba(251, 253, 163, 1);
+  color: #262626;
+  margin: auto;
+  border: 5px;
+  padding: 10px;
+  cursor: pointer;
+  align-items: center;
+  width: 150px;
+  position: relative;
+  border-radius: 20px;
 }
