@@ -4,6 +4,7 @@ const parser = require("body-parser");
 const ratingRoutes = require("./routes/ratings");
 const usersRoutes = require("./routes/users");
 const appExpress = express();
+const rateLimitMiddleware = require("./middleware/rateLimiter");
 require("dotenv").config();
 
 // -------- define CORS for frontend connection -----------
@@ -11,6 +12,8 @@ const cors = require("cors");
 appExpress.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 
 appExpress.use(parser.json());
+
+appExpress.use(rateLimitMiddleware);
 
 appExpress.use("/rating", ratingRoutes);
 appExpress.use("/user", usersRoutes);
