@@ -154,12 +154,10 @@ a {
   color: #000000;
   text-align: center;
   padding: 40px 90px;
-  color: #262626;
-  padding: 6px 12px;
   border: 1px solid #b1b371;
   margin: 20 auto;
   position: fixed;
-  top: 10%;
+  top: 20%;
   right: 0;
   left: 0;
   margin-left: auto;
@@ -526,29 +524,29 @@ select {
   width: 100%;
 }
 .container-contact {
+  box-sizing: border-box;
   z-index: 1;
   display: flex;
   flex-direction: column;
   width: 20%;
   height: auto;
   opacity: 90%;
-  border: #000000;
   align-items: center;
   justify-content: center;
   background: #fbfda3;
   color: #000000;
   text-align: center;
   padding: 40px 90px;
-  color: #262626;
-  padding: 6px 12px;
   border: 1px solid #b1b371;
   margin: 20 auto;
   position: fixed;
-  bottom: 30%;
+  top: 20%;
+  bottom: 20%;
   right: 0;
   left: 0;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 20px;
 }
 .messages {
   resize: vertical;
