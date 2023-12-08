@@ -4,17 +4,13 @@ import Registrationbox from "@/components/registrationbox";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Contact from "@/components/contact";
+import ContactButton from "@/components/contactButton";
 import { useState } from "react";
 
 export default function cycleOn() {
-  const [showBox, setShowBox] = useState(false);
-
-  // showBox (false, true)
-  // setShowBox(true)
-
-  function boxAppear() {
-    setShowBox(true);
-    console.log("test");
+  const [showContact, setShowContact] = useState(false);
+  function contactAppear() {
+    setShowContact(true);
   }
   return (
     <>
@@ -39,11 +35,16 @@ export default function cycleOn() {
           <br></br>
           <br></br>
           <button id="teamButton">
-            <a href="/aboutUs">Find out more about the cycleOn team</a>
+            <img id="TBpic" src="/bike.png"></img>
+            <a href="/aboutUs">
+              click here to find out more about the cycleOn team
+            </a>
           </button>
         </div>
         <br></br>
-        <Contact />
+        <p>or</p>
+        <ContactButton onClick={contactAppear} />
+        {showContact === true ? <Contact /> : null}
       </main>
       <Footer />
     </>

@@ -90,6 +90,7 @@ a:hover {
   align-items: center;
   width: 300px;
   position: relative;
+  border-radius: 15px;
 }
 .signupbutton div {
   height: 100%;
@@ -98,6 +99,8 @@ a:hover {
   align-items: center;
   margin: 0px;
   background: #000000;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 .signupbutton p {
   padding: 20px;
@@ -110,6 +113,8 @@ a:hover {
   object-fit: cover;
   height: 100%;
   width: 100%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 #logo {
   height: 75px;
@@ -483,7 +488,30 @@ select {
   resize: vertical;
 }
 #teamButton {
-  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  max-height: 80px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(251, 253, 163, 1) 30%
+  );
+  color: #262626;
+  margin: auto;
+  align-content: flex-end;
+  border: 0px;
+  padding: 0px;
+  cursor: pointer;
+  align-items: center;
+  width: 300px;
+  position: relative;
+  border-radius: 15px;
+}
+#TBpic {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 .contactbutton {
   display: flex;
@@ -504,6 +532,7 @@ select {
   align-items: center;
   width: 300px;
   position: relative;
+  border-radius: 15px;
 }
 .contactbutton div {
   height: 100%;
@@ -549,6 +578,7 @@ select {
   left: 0;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 15px;
 }
 .messages {
   resize: vertical;
@@ -564,5 +594,5 @@ select {
   align-items: center;
   width: 150px;
   position: relative;
-  border-radius: 20px;
+  border-radius: 15px;
 }
