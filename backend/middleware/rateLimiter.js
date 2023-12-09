@@ -5,6 +5,7 @@ const rateLimitMiddleware = rateLimit({
   max: 1,
   message: "Too many requests, please ty again later.",
   headers: true,
+  validate: { xForwardedForHeader: false },
 });
 
 module.exports = rateLimitMiddleware;

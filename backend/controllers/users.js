@@ -1,6 +1,5 @@
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
-const nodemailerSendgrid = require("nodemailer-sendgrid");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
@@ -68,16 +67,17 @@ const userRegister = async (req, res) => {
         to: newUser.email,
         subject: process.env.EMAIL_OPTIONS_SUBJECT,
         text: process.env.EMAIL_OPTIONS_TEXT,
-        html: `<p>Click <a href="http://localhost:3000/user/verify?hash=${newUser.verificationHash}">here</a> to verify your account.</p>`,
+        html: `<p>Click <a href="https://localhost:3000/user/verify?hash=${newUser.verificationHash}">here</a> to verify your account.</p>`,
       };
       transporter.sendMail(mailOptions, (error, info) => {
         console.log(info);
         if (error) {
-          console.log(error);
-          return res.status(505).json({ verification: "unable to send email" });
+          return res
+            .status(554)
+            .json({ verification: `unable to send email due to ${error}` });
         } else {
           newUser.save();
-          return res.status(205).json({ verification: "email sent" });
+          return res.status(200).json({ verification: "email sent" });
         }
       });
     }
