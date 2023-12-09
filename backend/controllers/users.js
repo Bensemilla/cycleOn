@@ -67,7 +67,7 @@ const userRegister = async (req, res) => {
         to: newUser.email,
         subject: process.env.EMAIL_OPTIONS_SUBJECT,
         text: process.env.EMAIL_OPTIONS_TEXT,
-        html: `<p>Click <a href="https://localhost:3000/user/verify?hash=${newUser.verificationHash}">here</a> to verify your account.</p>`,
+        html: `<p>Click <a href="http://localhost:3000/user/verify?hash=${newUser.verificationHash}">here</a> to verify your account.</p>`,
       };
       transporter.sendMail(mailOptions, (error, info) => {
         console.log(info);
