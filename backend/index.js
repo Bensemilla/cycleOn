@@ -1,11 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require("dotenv").config();
 const parser = require("body-parser");
 const ratingRoutes = require("./routes/ratings");
 const usersRoutes = require("./routes/users");
 const appExpress = express();
 const rateLimitMiddleware = require("./middleware/rateLimiter");
-require("dotenv").config();
 
 // -------- define CORS for frontend connection -----------
 const cors = require("cors");
