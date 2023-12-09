@@ -21,6 +21,7 @@ export default function cycleOn() {
       </Head>
       <Navbar />
       <main className="main">
+        <img src="bikeHH.jpg"></img>
         <div className="about">
           <h1>What is cycleOn?</h1>
           <a id="description">
@@ -34,17 +35,15 @@ export default function cycleOn() {
           </a>
           <br></br>
           <br></br>
-          <button id="teamButton">
-            <img id="TBpic" src="/bike.png"></img>
-            <a href="/aboutUs">
-              click here to find out more about the cycleOn team
-            </a>
-          </button>
+          <div className="buttonsAbout">
+            <button id="teamButton">
+              <a href="/aboutUs">check out the cycleOn team</a>
+            </button>
+            <p>or</p>
+            <ContactButton onClick={contactAppear} />
+            {showContact === true ? <Contact /> : null}
+          </div>
         </div>
-        <br></br>
-        <p>or</p>
-        <ContactButton onClick={contactAppear} />
-        {showContact === true ? <Contact /> : null}
       </main>
       <Footer />
     </>

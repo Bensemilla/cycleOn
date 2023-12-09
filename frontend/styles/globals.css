@@ -489,70 +489,38 @@ select {
 }
 #teamButton {
   display: flex;
-  flex-direction: row;
-  max-height: 80px;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 30%,
-    rgba(251, 253, 163, 1) 30%
-  );
+  max-height: 60px;
+  background: rgba(251, 253, 163, 1);
   color: #262626;
-  margin: auto;
-  align-content: flex-end;
   border: 0px;
-  padding: 0px;
+  padding: 20px;
   cursor: pointer;
   align-items: center;
-  width: 300px;
+  width: 150px;
   position: relative;
   border-radius: 15px;
-}
-#TBpic {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
+  font-weight: bold;
 }
 .contactbutton {
   display: flex;
-  flex-direction: row;
-  max-height: 80px;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 30%,
-    rgba(251, 253, 163, 1) 30%
-  );
+  max-height: 60px;
+  background: rgba(251, 253, 163, 1);
   color: #262626;
-  margin: auto;
-  align-content: flex-end;
   border: 0px;
-  padding: 0px;
+  padding: 20px;
   cursor: pointer;
   align-items: center;
-  width: 300px;
+  width: 150px;
   position: relative;
   border-radius: 15px;
-}
-.contactbutton div {
-  height: 100%;
-  width: 30%;
-  display: flex;
-  align-items: center;
-  margin: 0px;
-  background: #000000;
-}
-.contactbutton p {
-  padding: 20px;
-  width: calc(100% - 30%);
   font-weight: bold;
-  align-items: center;
-  text-align: center;
 }
-.contactbutton img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
+.buttonsAbout {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex: 1 1 0;
+  align-items: center;
 }
 .container-contact {
   z-index: 1;
