@@ -9,23 +9,25 @@ export default function Map() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title rel="stylesheet" href="globals.css"></title>
       </Head>
-      <Navbar />
-      <div className="container-profile">
-        <div className="profile-box">
-          <img src="menu2.png" className="menu-icon" />
-          <img src="settings.png" className="setting-icon" />
-          <img src="profile-pic.png" className="profile-pic" />
-          <h3>John Reed</h3>
-          <p>Standard User</p>
-          <div className="social-media">
-            <img src="instagram.png" />
-            <img src="telegram.png" />
-            <img src="dribble.png" />
-          </div>
-          <button type="button">Follow</button>
-          <div className="profile-bottom">
-            <p>Learn more about my profile</p>
-            <img src="arrow2.png" />
+      <div className="main">
+        <Navbar />
+        <div className="container-profile">
+          <div className="profile-box">
+            <img src="menu2.png" className="menu-icon" />
+            <img src="settings.png" className="setting-icon" />
+            <img src="profile-pic.png" className="profile-pic" />
+            <h3>John Reed</h3>
+            <p>Standard User</p>
+            <div className="social-media">
+              <img src="instagram.png" />
+              <img src="telegram.png" />
+              <img src="dribble.png" />
+            </div>
+            <button type="button">Follow</button>
+            <div className="profile-bottom">
+              <p>Learn more about my profile</p>
+              <img src="arrow2.png" />
+            </div>
           </div>
         </div>
       </div>

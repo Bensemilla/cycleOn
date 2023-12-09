@@ -20,11 +20,19 @@ body,
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: auto;
   margin: auto;
   text-align: justify;
   overflow: scroll;
-  padding: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+  background-color: #262626;
+  margin-top: 75px;
+  background-image: url("/Alster.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: #262626;
+  width: 100%;
 }
 .header {
   display: flex;
@@ -33,6 +41,12 @@ body,
   align-items: center;
   justify-content: space-between;
   height: 75px;
+  border-radius: 15px;
+  border-color: #000000;
+  position: fixed;
+  top: 0;
+  overflow: visible;
+  width: 100%;
 }
 .content {
   z-index: 1;
@@ -47,6 +61,7 @@ body,
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-grow: 3;
 }
 a {
   font-weight: bold;
@@ -66,10 +81,11 @@ a:hover {
   list-style: none;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 0px;
   text-decoration: bold;
   font-size: relative;
   cursor: pointer;
+  flex: 1;
 }
 .signupbutton {
   display: flex;
@@ -297,29 +313,24 @@ select {
 
 .container-map {
   width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  background-image: url("/background.png");
-  background-size: cover;
-  background-position: center;
+  flex-direction: row;
   padding-bottom: 60px;
+  position: relative;
 }
-
-.header-map {
-  color: #f1f1f1;
-  margin-bottom: 40px;
-  margin-top: 20px;
-}
-
 .map-embebed {
-  width: 80%;
+  padding: 15px;
+  border-radius: 25px;
+  width: 100%;
   height: 500px;
   /*filter: invert(100%);*/
 }
-
+#CTArate {
+  padding: 15px;
+  font-weight: bold;
+}
 /* ---- Finish the css for the file "map.js" ---- */
 
 .container-box {
@@ -348,9 +359,6 @@ select {
 .container-profile {
   width: 100%;
   height: 100vh;
-  background-image: url("/background.png");
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -435,7 +443,6 @@ select {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Kosugi_Maru", sans-serif;
 }
 
 .footer {
@@ -501,6 +508,9 @@ select {
   border-radius: 15px;
   font-weight: bold;
 }
+#bikeHH {
+  border-style: double;
+}
 .contactbutton {
   display: flex;
   max-height: 60px;
@@ -519,7 +529,6 @@ select {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  flex: 1 1 0;
   align-items: center;
 }
 .container-contact {
@@ -556,11 +565,14 @@ select {
   background: rgba(251, 253, 163, 1);
   color: #262626;
   margin: auto;
-  border: 5px;
+  border: 10px;
   padding: 10px;
   cursor: pointer;
   align-items: center;
   width: 150px;
-  position: relative;
+  position: absolute;
+  top: 15px;
+  left: 15px;
   border-radius: 15px;
+  font-weight: bold;
 }
