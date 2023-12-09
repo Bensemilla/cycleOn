@@ -2,9 +2,11 @@ import Velorouteselection from "@/components/velorouteselection";
 import Fields from "@/components/fields";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+// we are importing the proper package in order to be able to save the session cookie of the user and identify it when it communicates with the backend side.
 
 export default function Ratebox() {
   const user_session = useSession();
+  // we create this variable in order to save the user's session cookie inside it.
   console.log(user_session);
   const routes = [
     { num: 1, name: "CITY-RISSEN" },
@@ -62,6 +64,7 @@ export default function Ratebox() {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + user_session.data.accessToken,
+        // The "authorization" variable was created this way so we can store the access Token requiered in it.
       },
     });
     const data = await response.json();
