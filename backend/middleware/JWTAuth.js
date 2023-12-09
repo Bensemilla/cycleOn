@@ -6,9 +6,10 @@ const JWTAuth = (req, res, next) => {
 
   if (authHeader) {
     const token = authHeader.split(" ")[1];
-
+    console.log(tokenSecret);
     jwt.verify(token, tokenSecret, (err, user) => {
       if (err) {
+        console.log(err);
         return res.sendStatus(403);
       }
       req.user = user;
