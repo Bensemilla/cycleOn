@@ -19,7 +19,7 @@ const userDataValidation = [
     .escape(),
   body("email")
     .isEmail()
-    .normalizeEmail()
+    .normalizeEmail({ gmail_remove_dots: false })
     .withMessage("Provide a valid email address")
     .trim()
     .escape(),

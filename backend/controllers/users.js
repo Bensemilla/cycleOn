@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
+const nodemailerSendgrid = require("nodemailer-sendgrid");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
@@ -10,7 +11,6 @@ const { validationResult } = require("express-validator");
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
   port: process.env.EMAIL_PORT,
-  secure: true,
   auth: {
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
@@ -70,8 +70,10 @@ const userRegister = async (req, res) => {
         text: process.env.EMAIL_OPTIONS_TEXT,
         html: `<p>Click <a href="http://localhost:3000/user/verify?hash=${newUser.verificationHash}">here</a> to verify your account.</p>`,
       };
-      transporter.sendMail(mailOptions, (error) => {
+      transporter.sendMail(mailOptions, (error, info) => {
+        console.log(info);
         if (error) {
+          console.log(error);
           return res.status(505).json({ verification: "unable to send email" });
         } else {
           newUser.save();
