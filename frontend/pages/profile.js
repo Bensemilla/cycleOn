@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import ProfileRatings from "@/components/ProfileRatings";
 
 export default function Map() {
   return (
@@ -12,7 +13,9 @@ export default function Map() {
       <Navbar />
       <div className="container-profile">
         <div className="profile-box">
-          <img src="menu2.png" className="menu-icon" />
+          <a href="/profile-ratings">
+            <img src="menu2.png" className="menu-icon" />
+          </a>
           <img src="settings.png" className="setting-icon" />
           <img src="profile-pic.png" className="profile-pic" />
           <h3>John Reed</h3>
@@ -22,6 +25,9 @@ export default function Map() {
             <img src="telegram.png" />
             <img src="dribble.png" />
           </div>
+
+          <ProfileRatings />
+
           <button type="button">Follow</button>
           <div className="profile-bottom">
             <p>Learn more about my profile</p>
