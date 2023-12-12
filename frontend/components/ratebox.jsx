@@ -26,7 +26,10 @@ export default function Ratebox() {
   ];
 
   const questionnaire = [
-    { heading: "Easiness", question: "Is the route easy to navigate?" },
+    {
+      heading: "Easiness",
+      question: "Is the route easy to navigate?",
+    },
     {
       heading: "Scenery",
       question: "How picturesque is the landscape along the route?",
@@ -36,16 +39,6 @@ export default function Ratebox() {
       question: "Is the road surface in good condition for cycling?",
     },
   ];
-
-  /*   const questions = {
-    easiness: "Is the route...",
-  }
-  
-  *We have to re-do the hole file in order to fit with the actual backend schema
-
-  **See "ratingModel.js" file
-
-  */
 
   const [questions, setQuestions] = useState(questionnaire);
 
