@@ -57,6 +57,8 @@ export default function about() {
             <a href="https://www.linkedin.com/in/bruno-moschetto/"> Bruno</a>
           </li>
         </ul>
+        <br></br>
+        <br></br>
         <ContactButton onClick={contactAppear} />
         {showContact === true ? <Contact onClick={contactDisappear} /> : null}
       </main>

@@ -4,6 +4,7 @@ export default function contact({ onClick }) {
       <button className="contactclose" onClick={onClick}>
         x
       </button>
+      <br />
       <form>
         <p>
           Questions? Suggestions? Feedback? <br />
