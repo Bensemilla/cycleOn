@@ -21,7 +21,6 @@ export default function cycleOn() {
       </Head>
       <Navbar />
       <main className="main">
-        <img id="bikeHH" src="bikeHH.jpg"></img>
         <div className="about">
           <h1>What is cycleOn?</h1>
           <a id="description">

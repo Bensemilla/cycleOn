@@ -4,8 +4,8 @@ export default function Button(props) {
       <div>
         <img src="/bike.png"></img>
       </div>
-      <p>Plan your route!</p>
-      {/* needs to change to "Sign up" once the user is logged in */}
+      <p>sign up to rate a route</p>
+      {/* needs to change to "Sign up" once the user is not logged in */}
     </button>
   );
 }
