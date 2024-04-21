@@ -365,6 +365,14 @@ select {
   border-radius: 20px;
 }
 
+.profile-info {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .menu-icon {
   width: 25px;
   position: absolute;
@@ -384,6 +392,27 @@ select {
   border-radius: 50%;
   background: #262626;
   padding: 6px;
+}
+
+.profile-pic-placeholder {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  padding: 6px;
+  background: #262626;
+}
+
+.profile-pic-placeholder:after {
+  content: attr(data-initial);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: 500;
 }
 
 .profile-bottom {

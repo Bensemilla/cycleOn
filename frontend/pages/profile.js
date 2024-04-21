@@ -2,37 +2,33 @@ import Head from "next/head";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import ProfileRatings from "@/components/ProfileRatings";
+import { useSession } from "next-auth/react";
 
-export default function Map() {
+export default function Profile() {
+  const { data, status } = useSession();
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title rel="stylesheet" href="globals.css"></title>
-      </Head>
       <Navbar />
       <div className="container-profile">
         <div className="profile-box">
-          <a href="/profile-ratings">
-            <img src="menu2.png" className="menu-icon" />
-          </a>
-          <img src="settings.png" className="setting-icon" />
-          <img src="profile-pic.png" className="profile-pic" />
-          <h3>John Reed</h3>
-          <p>Standard User</p>
-          <div className="social-media">
-            <img src="instagram.png" />
-            <img src="telegram.png" />
-            <img src="dribble.png" />
+          <div className="profile-info">
+            {data.user?.image ? (
+              <img src="profile-pic.png" className="profile-pic" />
+            ) : (
+              <div
+                className="profile-pic-placeholder"
+                data-initial={data.user?.name.charAt(0)}
+              />
+            )}
+            <h3>{data.user?.name}</h3>
+            <p>{data.user?.email}</p>
           </div>
-
           <ProfileRatings />
-
-          <button type="button">Follow</button>
-          <div className="profile-bottom">
-            <p>Learn more about my profile</p>
-            <img src="arrow2.png" />
-          </div>
         </div>
       </div>
       <Footer />
