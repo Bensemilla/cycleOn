@@ -12,6 +12,10 @@ export default function cycleOn() {
   function contactAppear() {
     setShowContact(true);
   }
+  function contactDisappear() {
+    console.log("clicked");
+    setShowContact(false);
+  }
   return (
     <>
       <Head>
@@ -40,7 +44,9 @@ export default function cycleOn() {
             </button>
             <p>or</p>
             <ContactButton onClick={contactAppear} />
-            {showContact === true ? <Contact /> : null}
+            {showContact === true ? (
+              <Contact onClick={contactDisappear} />
+            ) : null}
           </div>
         </div>
       </main>

@@ -5,14 +5,16 @@ import Contact from "@/components/contact";
 import Button from "@/components/button";
 import ContactButton from "@/components/contactButton";
 import { useState } from "react";
-import contact from "@/components/contact";
 
 export default function about() {
   const [showContact, setShowContact] = useState(false);
   function contactAppear() {
     setShowContact(true);
   }
-
+  function contactDisappear() {
+    console.log("clicked");
+    setShowContact(false);
+  }
   return (
     <>
       <Head>
@@ -56,7 +58,7 @@ export default function about() {
           </li>
         </ul>
         <ContactButton onClick={contactAppear} />
-        {showContact === true ? <Contact /> : null}
+        {showContact === true ? <Contact onClick={contactDisappear} /> : null}
       </main>
       <Footer />
     </>

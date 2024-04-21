@@ -1,12 +1,10 @@
-export default function contact() {
+export default function contact({ onClick }) {
   return (
     <div className="container-contact">
+      <button className="contactclose" onClick={onClick}>
+        x
+      </button>
       <form>
-        {/*         <button
-          className="close" onclick={document.getElementById(container-contact).style.display='none'}
-        >
-          X
-        </button> */}
         <p>
           Questions? Suggestions? Feedback? <br />
           Drop us a note below:
