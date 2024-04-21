@@ -22,14 +22,14 @@ appExpress.use("/user", usersRoutes);
 
 // ------------- cronjob for unverified user deletion -----------
 
-const SIXTY_SECONDS = 1000 * 60;
+const ONE_DAY = 1000 * 60 * 60 * 24;
 
 const deleteUnverifiedUsers = async () => {
   console.log("Start user deletion");
   try {
     const response = await User.deleteMany({
       active: false,
-      createdAt: { $lt: new Date(Date.now() - SIXTY_SECONDS).toISOString() },
+      createdAt: { $lt: new Date(Date.now() - ONE_DAY).toISOString() },
     });
     console.log(`${response.deletedCount} users successfully deleted`);
     console.log("test");
@@ -37,8 +37,8 @@ const deleteUnverifiedUsers = async () => {
     console.log("Unable to delete users" + err);
   }
 };
-
-cron.schedule("*/1 * * * *", () => {
+// Schedule cronjob to run every day at 23:00
+cron.schedule("0 0 23 * *", () => {
   return deleteUnverifiedUsers();
 });
 
