@@ -26,12 +26,9 @@ body,
   overflow: scroll;
   padding-left: 10%;
   padding-right: 10%;
-  background-color: #262626;
+  background: #262626;
+  background: linear-gradient(180deg, #262626 0%, rgba(255, 255, 255, 1) 100%);
   margin-top: 75px;
-  background-image: url("/Alster.jpg");
-  background-size: cover;
-  background-position: center;
-  background-color: #262626;
   width: 100%;
 }
 .header {
@@ -142,7 +139,7 @@ a {
   cursor: pointer;
 }
 /* Here starts the css for the registration form */
-.tab {
+/* .tab {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #fbfda3;
@@ -156,8 +153,8 @@ a {
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
-  color: #000000;
-}
+  color: #000000; */
+/* } */
 .tab button:hover {
   background-color: #b1b371;
 }
@@ -165,22 +162,20 @@ a {
   z-index: 5;
   display: flex;
   flex-direction: column;
-  width: 30%;
+  min-width: 35vh;
   height: auto;
   opacity: 85%;
   border: #000000;
   align-items: center;
   justify-content: center;
   background: #fbfda3;
-  color: #000000;
   text-align: center;
   padding: 40px 90px;
   color: #262626;
-  padding: 6px 12px;
   border: 1px solid #b1b371;
   margin: 20 auto;
   position: absolute;
-  top: 10%;
+  top: 30%;
   right: 0;
   left: 0;
   margin-left: auto;
@@ -486,7 +481,7 @@ select {
   width: 100%;
   bottom: 0;
   height: auto;
-  padding: 10px;
+  padding: 25px;
 }
 .pwAlert {
   background-color: #000000;
@@ -505,7 +500,7 @@ select {
   padding-left: 0.5rem;
 }
 #teampic {
-  max-width: 100%;
+  max-width: 60%;
   height: auto;
   border-radius: 8px;
 }
@@ -514,6 +509,7 @@ select {
   gap: 20px;
   list-style: none;
   align-items: center;
+  color: #000000;
 }
 .contactUs {
   background-color: #fbfda3;
@@ -606,4 +602,48 @@ select {
   border-radius: 15px;
   font-weight: bold;
   opacity: 85%;
+}
+.about {
+  min-height: 80vh;
+}
+.contactclose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.registertabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+}
+.registertabs button {
+  align-items: stretch;
+  border-radius: 25px;
+  color: #ffffff;
+  background: #262626;
+  font-weight: bold;
+  border: #fbfda3;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+.registertabs button:hover {
+  background-color: #fbfda3;
+  color: #000000;
+}
+.inputButton {
+  align-items: stretch;
+  background: #262626;
+  border-radius: 25px;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px;
+  border: #fbfda3;
+}
+.inputButton:hover {
+  background-color: #fbfda3;
+  color: #000000;
 }

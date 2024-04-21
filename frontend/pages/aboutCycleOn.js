@@ -27,14 +27,25 @@ export default function cycleOn() {
       <main className="main">
         <div className="about">
           <h1>What is cycleOn?</h1>
+          <br></br>
           <a id="description">
-            CycleOn is your biking companion in Hamburg.<br></br> It helps you
-            with finding the best bike routes around our city by letting users
-            rate bike lanes, notify about obstructed roads or obstacles and
-            suggest alternatives for inefficient routes. After signing up, you
-            can share details about your bike, biking style and a short
-            desciprtion about yourself to find other bike lovers to connect
-            with. We are aiming to release a navigation function soon as well.
+            CycleOn is your biking companion in Hamburg.<br></br>
+            <br></br> It helps you with finding the best bike routes around our
+            city by letting users rate bike lanes, notify about obstructed roads
+            or obstacles and suggest alternatives for inefficient routes.
+            <br></br>
+            <br></br>All of this is based on the concept of Hamburg Veloroutes.
+          </a>
+          <br></br> <br></br>
+          <a href="https://www.hamburg.de/velorouten/">
+            Find more information on Hamburg's Veloroutes here
+          </a>
+          <br></br> <br></br>
+          <a>
+            After signing up, you can share details about your bike, biking
+            style and a short desciprtion about yourself to find other bike
+            lovers to connect with. We are aiming to release a navigation
+            function soon as well.
           </a>
           <br></br>
           <br></br>

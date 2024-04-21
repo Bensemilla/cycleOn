@@ -74,13 +74,14 @@ export default function Registrationbox({ hideBox }) {
 
   return (
     <div className="container-box">
-      <div>
-        <button onClick={showSignupTab}>Register here</button>
+      <div className="registertabs">
+        <button onClick={showSignupTab}>Register</button>
         <button onClick={showLoginTab}>Log in</button>
       </div>
       {tab === "register" ? (
         <div className="register">
           <form onSubmit={submitSignUp}>
+            <br />
             <label htmlFor="name-field">How should we call you?</label>
             <br />
             <input
