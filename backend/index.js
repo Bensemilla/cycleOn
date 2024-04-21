@@ -22,22 +22,24 @@ appExpress.use("/user", usersRoutes);
 
 // ------------- cronjob for unverified user deletion -----------
 
-const userDel = async () => {
+const SIXTY_SECONDS = 1000 * 60;
+
+const deleteUnverifiedUsers = async () => {
+  console.log("Start user deletion");
   try {
-    //const user = await User.findOne({ verified: false });
-    while (await User.findOne({ verified: false })) {
-      await User.findOneAndDelete({ verified: false });
-      console.log("User deleted");
-    }
-    console.log("No users to delete");
-  } catch (error) {
-    console.error(error);
+    const response = await User.deleteMany({
+      active: false,
+      createdAt: { $lt: new Date(Date.now() - SIXTY_SECONDS).toISOString() },
+    });
+    console.log(`${response.deletedCount} users successfully deleted`);
+    console.log("test");
+  } catch (err) {
+    console.log("Unable to delete users" + err);
   }
 };
 
 cron.schedule("*/1 * * * *", () => {
-  console.log("cronjob executed");
-  userDel();
+  return deleteUnverifiedUsers();
 });
 
 // -------------- conect to database and test connection ----------------

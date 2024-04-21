@@ -56,8 +56,6 @@ const userRegister = async (req, res) => {
         bikeType: req.body.bikeType,
         active: false,
         verificationHash: verificationHash(),
-        date: Date.now(),
-        verified: false,
       });
       await newUser.save();
 
