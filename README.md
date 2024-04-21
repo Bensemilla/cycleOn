@@ -1,4 +1,2 @@
 # cycleOn
-CycleOn is a WebApp to display and rate cycling routes in and around Hamburg. 
-On the basis of the City’s veloroutes, users can display and rate different routes and lanes to navigate their best way through the biking jungle of Hamburg. 
-By signing up, users can create a profile and enter information as well as prospectively connect with other users.
+We are a team of motivated people, who came together as part of TechLabs Hamburgs Web Development track and decided to continue working on our project to ultimately help the cyclists of Hamburg to more easily plan their routes and make cycling in and around Hamburg more safe, fun and convenient.

@@ -10,7 +10,6 @@ const { validationResult } = require("express-validator");
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
   port: process.env.EMAIL_PORT,
-  secure: true,
   auth: {
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
@@ -70,12 +69,15 @@ const userRegister = async (req, res) => {
         text: process.env.EMAIL_OPTIONS_TEXT,
         html: `<p>Click <a href="http://localhost:3000/user/verify?hash=${newUser.verificationHash}">here</a> to verify your account.</p>`,
       };
-      transporter.sendMail(mailOptions, (error) => {
+      transporter.sendMail(mailOptions, (error, info) => {
+        console.log(info);
         if (error) {
-          return res.status(505).json({ verification: "unable to send email" });
+          return res
+            .status(554)
+            .json({ verification: `unable to send email due to ${error}` });
         } else {
           newUser.save();
-          return res.status(205).json({ verification: "email sent" });
+          return res.status(200).json({ verification: "email sent" });
         }
       });
     }

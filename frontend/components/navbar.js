@@ -30,9 +30,9 @@ export default function navbar() {
         <div className="navbar">
           <a href="/aboutCycleOn">What is cycleOn?</a>
           <a href="/aboutUs">Who is cycleOn?</a>
-          <a href="/profile">My cycleOn profile</a>
           {status === "authenticated" ? (
             <>
+              <a href="/profile">My cycleOn profile</a>
               <Ratingbutton onClick={ratingAppear} />
               {rateBox === true ? <Ratebox /> : null}
               <button
@@ -42,8 +42,11 @@ export default function navbar() {
                 Logout
               </button>
             </>
-          ) : null}
-          <Button onClick={boxAppear} />
+          ) : (
+            <button className="contactbutton" onClick={boxAppear}>
+              Sign up
+            </button>
+          )}
           {showBox === true ? (
             <Registrationbox hideBox={() => setShowBox(false)} />
           ) : null}
