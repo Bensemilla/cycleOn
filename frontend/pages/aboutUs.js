@@ -20,8 +20,8 @@ export default function about() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
       <main className="main">
+        <Navbar />
         <h1>Team cycleOn</h1>
         <p>
           Team cycleOn came together with one shared project idea:<br></br>
@@ -55,9 +55,9 @@ export default function about() {
             <a href="https://www.linkedin.com/in/bruno-moschetto/"> Bruno</a>
           </li>
         </ul>
+        <ContactButton onClick={contactAppear} />
+        {showContact === true ? <Contact /> : null}
       </main>
-      <ContactButton onClick={contactAppear} />
-      {showContact === true ? <Contact /> : null}
       <Footer />
     </>
   );

@@ -1,16 +1,20 @@
-import Routes from "@/components/routes"
+import Routes from "@/components/routes";
 
 export default function Velorouteselection(props) {
-  const routes = props.routes
+  const routes = props.routes;
 
   return (
     <li id="route-selection">
-      <label for="velo-route">Select the Hamburg Velo route to rate:</label>
+      <a href="/" id="close">
+        x
+      </a>
+      <br></br>
+      <label for="velo-route">Select the Velo route to rate:</label>
       <select name="velo-route" id="velo-routes">
-        {routes.map(route =>
+        {routes.map((route) => (
           <Routes route={route} />
-        )}
+        ))}
       </select>
     </li>
-  )
+  );
 }
