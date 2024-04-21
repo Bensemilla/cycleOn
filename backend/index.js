@@ -6,6 +6,8 @@ const ratingRoutes = require("./routes/ratings");
 const usersRoutes = require("./routes/users");
 const appExpress = express();
 const rateLimitMiddleware = require("./middleware/rateLimiter");
+const User = require("./models/User");
+const cron = require("node-cron");
 
 // -------- define CORS for frontend connection -----------
 const cors = require("cors");
@@ -17,6 +19,28 @@ appExpress.use(rateLimitMiddleware);
 
 appExpress.use("/rating", ratingRoutes);
 appExpress.use("/user", usersRoutes);
+
+// ------------- cronjob for unverified user deletion -----------
+
+const ONE_DAY = 1000 * 60 * 60 * 24;
+
+const deleteUnverifiedUsers = async () => {
+  console.log("Start user deletion");
+  try {
+    const response = await User.deleteMany({
+      active: false,
+      createdAt: { $lt: new Date(Date.now() - ONE_DAY).toISOString() },
+    });
+    console.log(`${response.deletedCount} users successfully deleted`);
+    console.log("test");
+  } catch (err) {
+    console.log("Unable to delete users" + err);
+  }
+};
+// Schedule cronjob to run every day at 23:00
+cron.schedule("0 0 23 * *", () => {
+  return deleteUnverifiedUsers();
+});
 
 // -------------- conect to database and test connection ----------------
 

@@ -56,8 +56,6 @@ const userRegister = async (req, res) => {
         bikeType: req.body.bikeType,
         active: false,
         verificationHash: verificationHash(),
-        date: Date.now(),
-        createdAt: Date.now(),
       });
       await newUser.save();
 
@@ -128,7 +126,7 @@ const userVerify = async (req, res) => {
     if (verifiedUser) {
       verifiedUser.active = true;
       verifiedUser.verificationHash = undefined;
-      verifiedUser.createdAt = undefined;
+      verifiedUser.verified = true;
       verifiedUser.save();
       return res
         .status(220)
